@@ -1,0 +1,33 @@
+body {
+    color: white;
+    font-size: 2rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+.hero {
+    /*height: 200px;*/
+
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(45deg, rgba(61, 188, 54, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/4421377/pexels-photo-4421377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    
+}
+
+.text-on-image {
+    padding: 10px;
+    text-align: center;
+    color: rgb(56, 69, 163);
+    font-size: 55px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}

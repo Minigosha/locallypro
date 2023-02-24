@@ -1,0 +1,9 @@
+.Footer{
+    background: rgb(84 166 77);
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    
+}
