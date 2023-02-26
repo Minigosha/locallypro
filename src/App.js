@@ -1,5 +1,5 @@
 import React from "react";
-import ChooseEventPage from "./components/page/start/ChooseEvent";
+import ChooseEventPage from "./components/page/start/ChooseEventPage";
 
 function App() {
   return (

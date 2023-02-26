@@ -1,0 +1,12 @@
+.Card{
+    padding: 25px;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+    background: #66cdaa;
+    color: white;
+    font-size: 18px;
+    box-shadow: 3px 3px 4px #888;
+    border-radius: 10px;
+    text-shadow: 3px 3px 12px black;
+
+}

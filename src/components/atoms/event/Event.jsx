@@ -4,9 +4,9 @@ import './Event.css'
 const Event = ({date, time, address}) => {
     return(
         <div className='Event'>
-            <span>{date}</span>
-            <span>{time}</span>
-            <span>{address}</span>
+            <p>{date}</p>
+            <p>{time}</p>
+            <p>{address}</p>
         </div>
 )}
 
