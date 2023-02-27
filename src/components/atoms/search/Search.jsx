@@ -1,6 +1,6 @@
 
 import React from 'react'
-import './text.css'
+import './Search.css'
 
 const Text = (props) => {
   return (

@@ -8,7 +8,7 @@ const SectionHeading = ({heading}) => {
     return(
        
         <div className='heading'>
-            <h2>{heading}</h2><PlusIcon></PlusIcon>
+            <h2>{heading}<PlusIcon></PlusIcon></h2>
         </div>
 
         

@@ -6,8 +6,8 @@ import ProductCard from '../../molecules/productCard/ProductCard'
 import Footer from '../../organims/footer/Footer'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
 import ImageForGallery from '../../atoms/imageForGallery/ImageForGallery'
-//import Gallery from '../../molecules/gallery/Gallery'
-//import Search from '../../atoms/search/Search'
+import Gallery from '../../molecules/gallery/Gallery'
+import Search from '../../atoms/search/Search'
 import BasicModal from '../../molecules/basicModal/BasicModal'
 
 
@@ -29,12 +29,12 @@ const ProducerStartPage = () => {
     const [product, setProduct] = useState([
         {   
             
-            description : 'Mozzarella cheese',
+            name : 'Mozzarella cheese',
             quantity : '100gr',
             price :'50Kr'
         },
         {
-            description : 'Halloumi cheese',
+            name : 'Halloumi cheese',
             quantity : '80gr',
             price :'35Kr'
         },
@@ -57,22 +57,24 @@ const ProducerStartPage = () => {
         {/* TODO: Collapsible menu for events */}
             {events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
 
-            <ContentContainer>
             {/* MY PRODUCTS */}
+            <ContentContainer>
             <SectionHeading
                 heading={"My products"}
             ></SectionHeading>
-            {/*<Search></Search>*/}
-            {/*<Gallery></Gallery>*/}
+            <Search></Search>
+            <Gallery>
             {product.map(product => <ProductCard name= {product.name} quantity = {product.quantity} price = {product.price}/>)} 
-            
+        </Gallery>
             <button>Show modal</button>
+            
       <BasicModal/>
                 
                
 
-            </ContentContainer>
-            <Footer></Footer>
+    </ContentContainer>
+            
+    <Footer></Footer>
         </>
     )   
 }
