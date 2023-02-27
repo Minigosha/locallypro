@@ -1,6 +1,6 @@
 import React from 'react'
 import ImageForGallery from '../../atoms/imageForGallery/ImageForGallery'
-import './ImageForGallery.css'
+
 
 const ProductCard = ({ name, quantity, price }) => {
     return(

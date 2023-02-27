@@ -5,6 +5,7 @@ import Footer from '../../organims/footer/Footer'
 import Intro from '../../atoms/intro/Intro'
 import EventCard from '../../molecules/eventCard/EventCard'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
+//import Search from '../../atoms/search/Search'
 
 const ChooseEventPage = () => {
     const [rawEvents, setRawEvents] = useState([
@@ -58,20 +59,25 @@ const ChooseEventPage = () => {
     return(
         <>
             {/* Header */}
-            <div>
-                <Hero 
-                    source = {"https://images.pexels.com/photos/4421377/pexels-photo-4421377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}
-                    
-                    alt = {"Green Wheat"}    
-                ></Hero>
-                <Intro  intro={'Choose when and where you want to buy local products:'}/> 
-            </div>
+        
+            <Hero 
+                source = {"https://images.pexels.com/photos/4421377/pexels-photo-4421377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}
+                
+                alt = {"Green Wheat"}    
+            ></Hero>
+        
+
             {/* Content */}
+            <Intro  intro={'Choose when and where you want to buy local products:'}/>
+
+            {/*<Search></Search>*/}
+
             <ContentContainer>
                 {/*{events.map(event => event)}*/}
                 {rawEvents.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
 
             </ContentContainer>
+            
             <Footer></Footer>
 
 

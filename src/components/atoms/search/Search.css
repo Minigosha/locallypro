@@ -1,0 +1,13 @@
+
+.textField {
+    height: 20px;
+    width: 250px;
+    border: 1px;
+    border-radius: 4px;
+    background-image: url('search.svg');
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 2px 2px;;
+    padding: 2px 10px 0.5px 20px;
+    font-size: 10px;
+}

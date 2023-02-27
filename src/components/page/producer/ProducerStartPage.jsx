@@ -5,6 +5,10 @@ import EventCard from '../../molecules/eventCard/EventCard'
 import ProductCard from '../../molecules/productCard/ProductCard'
 import Footer from '../../organims/footer/Footer'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
+import ImageForGallery from '../../atoms/imageForGallery/ImageForGallery'
+//import Gallery from '../../molecules/gallery/Gallery'
+//import Search from '../../atoms/search/Search'
+import BasicModal from '../../molecules/basicModal/BasicModal'
 
 
 
@@ -23,7 +27,8 @@ const ProducerStartPage = () => {
         },
     ])
     const [product, setProduct] = useState([
-        {
+        {   
+            
             description : 'Mozzarella cheese',
             quantity : '100gr',
             price :'50Kr'
@@ -57,10 +62,12 @@ const ProducerStartPage = () => {
             <SectionHeading
                 heading={"My products"}
             ></SectionHeading>
+            {/*<Search></Search>*/}
+            {/*<Gallery></Gallery>*/}
+            {product.map(product => <ProductCard name= {product.name} quantity = {product.quantity} price = {product.price}/>)} 
             
-           {product.map(product => <ProductCard name= {product.name} quantity = {product.quantity} price = {product.price}/>)} 
-            
-
+            <button>Show modal</button>
+      <BasicModal/>
                 
                
 

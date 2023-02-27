@@ -1,12 +1,7 @@
  
 .img{
-    width: 600px;
-    height: 400px;
-  }
-
- .gallery{
-    display: flex;
-    flex-wrap: wrap;
+    width: 300px;
+    height: auto;
   }
 
 /*
