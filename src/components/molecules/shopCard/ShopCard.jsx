@@ -4,7 +4,7 @@ import './ShopCard.css'
 
 const ShopCard = ({ shopName }) => {
     return(
-        <Card backgroundColor={"#50b492"}>
+        <Card cssClass={'producerCard'}>
             <p>{shopName}</p>
         </Card>
     )

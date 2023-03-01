@@ -1,12 +1,78 @@
 .Card{
-    padding: 25px;
+    padding: 10px;
     margin: 10px 10px 10px 10px;
     text-align: center;
     background: #66cdaa;
-    color: white;
     font-size: 18px;
     box-shadow: 3px 3px 4px #888;
     border-radius: 10px;
-    text-shadow: 3px 3px 12px black;
+    border: 1px solid #98bea7be;
+    transition: transform .2s;
+    opacity: 1; 
+    font-family:'Gill Sans MT';
+    cursor: pointer;
+    
+}
+.productCard{
+    background: white;
+    color: black;
+    padding: 10px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 3px 3px 4px #888;
+    border-radius: 10px;
+    border: 1px solid #98bea7be;
+    transition: transform .2s;
+    opacity: 1; 
+    font-family:'Gill Sans MT';
+    cursor: pointer;
+    
+}
+.eventCard{
+    background: #66cdaa;
+    color: white;
+    padding: 10px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 3px 3px 4px #888;
+    border-radius: 10px;
+    border: 1px solid #98bea7be;
+    transition: transform .2s;
+    opacity: 1; 
+    font-family:'Gill Sans MT';
+    cursor: pointer;
+}
+.producerCard{
+    background: #66cdaa;
+    color: white;
+    padding: 10px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 3px 3px 4px #888;
+    border-radius: 10px;
+    border: 1px solid #98bea7be;
+    transition: transform .2s;
+    opacity: 1; 
+    font-family:'Gill Sans MT';
+    cursor: pointer;
+}
 
+.productCard:hover{
+    border: 1px solid #777;
+    transform: scale(1.015); 
+    opacity: 0.9;
+    
+}
+.producerCard:hover{
+    border: 1px solid #777;
+    transform: scale(1.015); 
+    opacity: 0.9;
+}
+.eventCard:hover{
+    border: 1px solid #777;
+    transform: scale(1.015); 
+    opacity: 0.9;
 }

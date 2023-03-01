@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import SectionHeading from '../../atoms/sectionHeading/SectionHeading'
-import ShopCard from '../../molecules/shopCard/ShopCard'
+//import ShopCard from '../../molecules/shopCard/ShopCard'
 import EventCard from '../../molecules/eventCard/EventCard'
 import ProductCard from '../../molecules/productCard/ProductCard'
-import Footer from '../../organims/footer/Footer'
+//import Footer from '../../organims/footer/Footer'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
-import ImageForGallery from '../../atoms/imageForGallery/ImageForGallery'
 import Gallery from '../../molecules/gallery/Gallery'
 import Search from '../../atoms/search/Search'
-import BasicModal from '../../molecules/basicModal/BasicModal'
+//import BasicModal from '../../molecules/basicModal/BasicModal'
+import ProducerCard from '../../molecules/producerCard/ProducerCard'
 
 
 
@@ -39,6 +39,9 @@ const ProducerStartPage = () => {
             price :'35Kr'
         },
     ])
+    
+
+
     return(
         <>
             {/* MY SHOP */}
@@ -46,9 +49,9 @@ const ProducerStartPage = () => {
                 heading={"My shop"}
             ></SectionHeading>
         {/* TODO: Collapsible menu for shops */}
-            <ShopCard
-                shopName={"Milky way cheese"}
-            ></ShopCard>
+            <ProducerCard
+                businessName={"Milky way cheese"}
+            ></ProducerCard>
                      
             {/* EVENTS */}
             <SectionHeading
@@ -59,22 +62,29 @@ const ProducerStartPage = () => {
 
             {/* MY PRODUCTS */}
             <ContentContainer>
-            <SectionHeading
-                heading={"My products"}
-            ></SectionHeading>
-            <Search></Search>
-            <Gallery>
-            {product.map(product => <ProductCard name= {product.name} quantity = {product.quantity} price = {product.price}/>)} 
-        </Gallery>
-            <button>Show modal</button>
+
+                <SectionHeading
+                    heading={"My products"}
+                ></SectionHeading>
+
+                <Search></Search>
+
+                <Gallery>
+                    {product.map(product => <ProductCard name= {product.name} quantity = {product.quantity} price = {product.price}/>)} 
+                </Gallery>
+
+
+
+    
+    
             
-      <BasicModal/>
-                
+        
                
 
     </ContentContainer>
+
             
-    <Footer></Footer>
+    
         </>
     )   
 }

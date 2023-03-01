@@ -1,9 +1,9 @@
 import React from 'react'
 import './Card.css'
 
-const Card = ({backgroundColor, children}) => {
+const Card = ({children, cssClass}) => {
     return(
-        <div className='Card' style={{background:(backgroundColor)}}>
+        <div className={cssClass} >
            {children}
         </div>
 )}

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Hero from '../../atoms/hero/Hero'
 import Event from '../../atoms/event/Event'
-import Footer from '../../organims/footer/Footer'
+//import Footer from '../../organims/footer/Footer'
 import Intro from '../../atoms/intro/Intro'
 import EventCard from '../../molecules/eventCard/EventCard'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
@@ -78,7 +78,7 @@ const ChooseEventPage = () => {
 
             </ContentContainer>
             
-            <Footer></Footer>
+
 
 
 

@@ -1,13 +1,15 @@
 import React from 'react'
-import ImageForGallery from '../atoms/imageForGallery/ImageForGallery'
+import Card from '../../atoms/card/Card'
 import './ProducerCard.css'
 
-const ProducerCard = ({ businessName}) => {
+
+const ProducerCard = ({ businessName }) => {
     return(
-        <ImageForGallery>
+        <Card cssClass={'producerCard'}>
+
             <p class="businessName">{businessName}</p>
 
-        </ImageForGallery>
+        </Card>
     )
 }
 export default ProducerCard

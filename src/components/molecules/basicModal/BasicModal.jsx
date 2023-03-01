@@ -1,4 +1,8 @@
-import React from "react";
+//import React, { useEffect } from "react";
+//import {CSSTransition} from 'react-transition-group';
+import './BasicModal.css';
+//import { ReactDOM } from "react";
+import React from 'react';
 
 //TUTORIAL:
 //https://medium.com/tinyso/how-to-create-a-modal-component-in-react-from-basic-to-advanced-a3357a2a716a
@@ -6,34 +10,45 @@ import React from "react";
 
 const BasicModal = props /*(modalTitle, modalContent, modalFooter)*/  => {
 
-if (!props.show){
-    return null
-}
-    return (
-        <div className= "modal">
-            <div className="modal-content">
-                <div className="modal-header">
+    
+    if (!props.show){
+        return null
+    }
 
-                    <h4 className="modal-title">
-                        {/*{modalTitle}*/}
+
+    return (
+        /*<CSSTransition
+            in={props.show}
+            unmountOnExit
+            timeout={{enter:0, exit: 300}}
+        >*/
+
+            <div className={`'modal' ${props.show ?'show': ''}`} onClick={props.onClose}>
+                <div className='modal-content' onClick = {e => e.stopPropagation()}>
+          
+                <div className='modal-header'>
+
+                    <h4 className='modal-title'>
+                        {props.modalTitle}
                         MODAL TITLE
                     </h4>
 
                 </div>
 
-                <div className="modal-body">
+                <div className='modal-body'>
                     {/*{modalContent}*/}
                     Modal content
                 </div>
 
-                <div className="modal-footer">
+                <div className='modal-footer'>
                     {/*{modalFooter}*/}
-                    <button> Close </button>
+                    <button onClick={props.onClose} className='button'> Close </button>
                 
                 </div>
 
             </div>
         </div>
+       /* </CSSTransition>*/
     )
 
 }
