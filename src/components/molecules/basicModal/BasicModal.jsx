@@ -3,7 +3,7 @@
 import './BasicModal.css';
 //import { ReactDOM } from "react";
 import React from 'react';
-
+import BasicForm from '../../atoms/forms/BasicForm';
 //TUTORIAL:
 //https://medium.com/tinyso/how-to-create-a-modal-component-in-react-from-basic-to-advanced-a3357a2a716a
 
@@ -24,7 +24,7 @@ const BasicModal = props /*(modalTitle, modalContent, modalFooter)*/  => {
         >*/
 
             <div className={`'modal' ${props.show ?'show': ''}`} onClick={props.onClose}>
-                <div className='modal-content' onClick = {e => e.stopPropagation()}>
+                <div className={'modal-content'} onClick = {e => e.stopPropagation()}>
           
                 <div className='modal-header'>
 
@@ -37,7 +37,7 @@ const BasicModal = props /*(modalTitle, modalContent, modalFooter)*/  => {
 
                 <div className='modal-body'>
                     {/*{modalContent}*/}
-                    Modal content
+                    Modal content                    
                 </div>
 
                 <div className='modal-footer'>

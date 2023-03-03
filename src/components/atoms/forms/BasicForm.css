@@ -1,0 +1,22 @@
+
+.basicForm {
+    height: 20px;
+    width: 250px;
+    border: 2px solid grey;
+    border-radius: 5px;   
+    padding: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+    outline: none;
+}
+
+.labels {
+    font-size: 20px;
+    font-family: 'Gill Sans MT';
+    color: #41876f;
+
+}
+
+.basicForm:focus {
+border: 2px solid #66cdaa;
+}

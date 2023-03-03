@@ -3,6 +3,9 @@ import ProducerStartPage from './components/page/producer/ProducerStartPage';
 import ChooseEventPage from './components/page/start/ChooseEventPage';
 import BasicModal from "./components/molecules/basicModal/BasicModal";
 import { useState } from "react";
+import BasicForm from "./components/atoms/forms/BasicForm";
+
+
 
 
 
@@ -15,6 +18,7 @@ function App() {
 
       <ChooseEventPage></ChooseEventPage>
       <ProducerStartPage></ProducerStartPage>
+      <BasicForm></BasicForm>
   
         {/* TESTING BASICMODAL */}
         <div>
@@ -22,6 +26,7 @@ function App() {
           <BasicModal onClose ={()=>setShow(false)} show = {show} />
         </div>
           {/* TESTING BASICMODAL */}
+     
 
     </div>
   );

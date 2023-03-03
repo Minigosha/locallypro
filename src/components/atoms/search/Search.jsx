@@ -6,7 +6,7 @@ const Text = (props) => {
   return (
     <div>
       <form onSubmit={props.handleSubmit}>
-        <input type="text" className='textField' placeholder='search...' onChange={(e)=>{props.changeText(e.target.value)}}></input>
+        <input type="text" className='textField' placeholder='Search...' onChange={(e)=>{props.changeText(e.target.value)}}></input>
       </form>
     </div>
   
