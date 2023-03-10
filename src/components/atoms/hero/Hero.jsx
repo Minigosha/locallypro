@@ -4,8 +4,8 @@ import './Hero.css'
 const Hero = ({source, altText}) => {
     return(
         <>
-            <div className = "hero" style={{backgroundImage: "linear-gradient(45deg, rgba(61, 188, 54, 0.5), rgba(0, 0, 0, 0.5)), url('"+source+"')"}}>
-                <img className = "img"
+            <div className = "hero" style={{backgroundImage: "linear-gradient(45deg, rgba(61, 188, 54, 0.5), rgba(0, 0, 0, 0.5)), url('"+source+"')center center / cover no-repeat"}}>
+                <img
                     /*src = {source}*/
                     alt = {altText}
                     

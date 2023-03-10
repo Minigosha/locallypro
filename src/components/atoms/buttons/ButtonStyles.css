@@ -1,0 +1,83 @@
+.onlyIcon{
+    color:#555555;
+   /* text-shadow: 5px 3px 17px #848282;*/
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    margin-left: auto;
+}
+
+
+.onlyIcon:hover{
+    
+    color: #41876f;
+   
+    
+}
+
+.greenButtonSm{
+    color: white;
+    background-color: #41876f;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(2px 5px 2px rgb(0 0 0 / 0.4));
+    width: 30px; 
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    margin:0 0 0 10px;
+
+}
+
+.greenButtonSm:hover{
+    background-color:#66cdaa;
+    transition: 0.2s;
+     
+}
+
+
+.greenButtonXL{
+    color: white;
+    background-color: #41876f;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(2px 5px 2px rgb(0 0 0 / 0.4));
+    width: 60px; 
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+
+}
+
+.greenButtonXL:hover{
+    background-color:#66cdaa;
+    transition: 0.2s;
+     
+}
+.blackButtonXL{
+    color: white;
+    background-color: #555555;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(2px 5px 2px rgb(0 0 0 / 0.4));
+    width: 60px; 
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+
+}
+.blackButtonXL:hover{
+    background-color: #979797;
+    transition: 0.2s;
+}

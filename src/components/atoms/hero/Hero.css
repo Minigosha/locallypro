@@ -6,31 +6,33 @@
 */
 
 .hero {
-    width: 100%;
+    width: 100vw;
     height: 40vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 2rem;
     text-shadow: 3px 3px 5px black;
     background-position: center;
     background-size: cover;
     color: white;
-  
-    /*background-image: linear-gradient(45deg, rgba(61, 188, 54, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/4421377/pexels-photo-4421377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');*/
+    font-family:'Gill Sans MT';
     
+    background-image: linear-gradient(45deg, rgba(61, 188, 54, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.pinimg.com/originals/f0/77/d3/f077d3049799fee40694e5db9a90f5ca.png');    
+    /*https://images.pexels.com/photos/4421377/pexels-photo-4421377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2*/
 }
 
-.text-on-image {
-    padding: 10px;
-    text-align: center;
-    color: rgb(46, 70, 255);
-    font-size: 55px;
+.h1 {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    font-weight: bold;
-    font-family:'Gill Sans';
+    color: rgb(46, 70, 255);
+    font-weight: bold;    
+    
+  
+    text-align: center;
+  
 }

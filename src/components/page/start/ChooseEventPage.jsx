@@ -7,6 +7,7 @@ import EventCard from '../../molecules/eventCard/EventCard'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
 //import Search from '../../atoms/search/Search'
 
+
 const ChooseEventPage = () => {
     const [rawEvents, setRawEvents] = useState([
         {
@@ -58,10 +59,11 @@ const ChooseEventPage = () => {
     ])
     return(
         <>
+        
             {/* Header */}
         
             <Hero 
-                source = {"https://images.pexels.com/photos/4421377/pexels-photo-4421377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}
+                source = {"https://i.pinimg.com/originals/f0/77/d3/f077d3049799fee40694e5db9a90f5ca.png"}
                 
                 alt = {"Green Wheat"}    
             ></Hero>
@@ -77,6 +79,7 @@ const ChooseEventPage = () => {
                 {rawEvents.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
 
             </ContentContainer>
+
             
 
 

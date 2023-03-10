@@ -3,12 +3,13 @@
 import './BasicModal.css';
 //import { ReactDOM } from "react";
 import React from 'react';
-import BasicForm from '../../atoms/forms/BasicForm';
+//import BasicForm from '../../atoms/forms/BasicForm';
+
 //TUTORIAL:
 //https://medium.com/tinyso/how-to-create-a-modal-component-in-react-from-basic-to-advanced-a3357a2a716a
 
 
-const BasicModal = props /*(modalTitle, modalContent, modalFooter)*/  => {
+const BasicModal = props => {
 
     
     if (!props.show){
@@ -17,38 +18,31 @@ const BasicModal = props /*(modalTitle, modalContent, modalFooter)*/  => {
 
 
     return (
-        /*<CSSTransition
-            in={props.show}
-            unmountOnExit
-            timeout={{enter:0, exit: 300}}
-        >*/
+
 
             <div className={`'modal' ${props.show ?'show': ''}`} onClick={props.onClose}>
+                
                 <div className={'modal-content'} onClick = {e => e.stopPropagation()}>
           
                 <div className='modal-header'>
 
-                    <h4 className='modal-title'>
+                    <h2 className='modal-title'>
                         {props.modalTitle}
-                        MODAL TITLE
-                    </h4>
+                    </h2>
 
                 </div>
 
                 <div className='modal-body'>
-                    {/*{modalContent}*/}
-                    Modal content                    
+                    {props.modalContent}
                 </div>
 
                 <div className='modal-footer'>
-                    {/*{modalFooter}*/}
-                    <button onClick={props.onClose} className='button'> Close </button>
-                
+                    {props.modalFooter}
                 </div>
 
             </div>
         </div>
-       /* </CSSTransition>*/
+      
     )
 
 }

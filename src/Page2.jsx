@@ -11,18 +11,15 @@ import ProducerCard from '../../molecules/producerCard/ProducerCard'
 import AddButton from '../../atoms/buttons/add/addButton'
 import AddEventForm from '../../molecules/forms/event/AddEventForm'
 import BasicModal from '../../molecules/modals/BasicModal'
-import { Plus, PlusCircle } from 'react-feather'
+import { PlusCircle } from 'react-feather'
 import SubmitButton from '../../atoms/buttons/tick/SubmitButton'
 import BackButton from '../../atoms/buttons/back/backButton'
-import BasicButton from '../../atoms/buttons/BasicButton'
-import AddProductForm from '../../molecules/forms/product/AddProductForm'
+
 
 
 
 const ProducerStartPage = () => {
-    const [showAddEventForm, setShowAddEventForm] = useState(false)
     const [show, setShow] = useState(false)
-
     const [events, setEvents] = useState([
         {
             date: '2/7',
@@ -54,14 +51,9 @@ const ProducerStartPage = () => {
     return (
         <>
             <BasicModal 
-                onClose={() => setShowAddEventForm(false)} show={show}
-                modalTitle="Add new event"
-                modalContent = {<AddEventForm setShowAddEventForm={setShow}/>}
-            />
-            <BasicModal 
                 onClose={() => setShow(false)} show={show}
-                modalTitle="Add new product"
-                modalContent = {<AddProductForm setShowModal={setShow}/>}
+                modalTitle="Add new event"
+                modalContent = {<AddEventForm setShowModal={setShow}/>}
             />
 
             {/* MY SHOP */}
@@ -78,7 +70,6 @@ const ProducerStartPage = () => {
             {/* EVENTS */}
             <SectionHeading
                 heading={"Coming events"}
-                actionButton={<BasicButton handleClick={() => setShowAddEventForm(true)} icon={<Plus/>} className='greenButtonSm'/>}
             ></SectionHeading>
 
             {events.map(event => <EventCard date={event.date} time={event.time} address={event.address} />)}
@@ -91,11 +82,9 @@ const ProducerStartPage = () => {
 
                 <SectionHeading
                     heading={"My products"} 
-                    actionButton={<BasicButton handleClick={() => setShow(true)} icon={<Plus/>} className='greenButtonSm'/>}
-                >
-                    
-                </SectionHeading>
-             
+                ></SectionHeading>
+
+                <AddButton handleClick={() => setShow(true)} icon={<PlusCircle/>} className='greenButton'/>
 
                 <SearchBar/>
 

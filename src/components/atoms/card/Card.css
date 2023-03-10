@@ -10,9 +10,9 @@
     transition: transform .2s;
     opacity: 1; 
     font-family:'Gill Sans MT';
-    cursor: pointer;
-    
+    cursor: pointer;    
 }
+
 .productCard{
     background: white;
     color: black;
@@ -22,7 +22,7 @@
     font-size: 18px;
     box-shadow: 3px 3px 4px #888;
     border-radius: 10px;
-    border: 1px solid #98bea7be;
+    border: 1px solid #777;
     transition: transform .2s;
     opacity: 1; 
     font-family:'Gill Sans MT';
@@ -61,7 +61,7 @@
 }
 
 .productCard:hover{
-    border: 1px solid #777;
+    border: 1px solid #555555;
     transform: scale(1.015); 
     opacity: 0.9;
     
@@ -70,9 +70,11 @@
     border: 1px solid #777;
     transform: scale(1.015); 
     opacity: 0.9;
+    
 }
 .eventCard:hover{
     border: 1px solid #777;
     transform: scale(1.015); 
     opacity: 0.9;
+    
 }

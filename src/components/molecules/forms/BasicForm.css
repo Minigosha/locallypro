@@ -1,0 +1,25 @@
+.textField {
+    height: 20px;
+    width: 250px;
+    border: 2px solid grey;
+    border-radius: 5px;   
+    padding: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+    outline: none;
+    max-width: 90%;
+    width: 70vw;
+    margin: 5px 0px 18px 0px;
+}
+
+.labels {
+    font-size: 20px;
+    font-family: 'Gill Sans MT';
+    color: #41876f;
+   
+}
+
+
+.textField:focus {
+    border: 2px solid #66cdaa;
+}

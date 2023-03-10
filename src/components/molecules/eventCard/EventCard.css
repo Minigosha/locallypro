@@ -3,3 +3,6 @@ p{
     font-size: 18px;
     
 }
+p:hover{
+    font:bold;
+}
