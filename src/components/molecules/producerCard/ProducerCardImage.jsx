@@ -5,7 +5,7 @@ import Card from '../../atoms/card/Card'
 import MenuMoreButton from '../../atoms/buttons/menu/MenuMoreButton'
 
 
-const ProductCard = ({ name, quantity, price }) => {
+const ProductCardImage = ({ name, quantity, price }) => {
     return(
         <Card className={'productCard'} >
             <div>
@@ -15,17 +15,11 @@ const ProductCard = ({ name, quantity, price }) => {
 
             </ImageForGallery>
             
-            <p class="name">{name}</p>
-            <p class="quantity">{quantity}</p>
-            <p class="price">{price}</p>
+            <p className="name">{name}</p>
+
             </div>
 
         </Card>
     )
 }
-export default ProductCard
-
-
-
-
-
+export default ProductCardImage

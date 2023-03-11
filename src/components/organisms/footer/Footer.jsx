@@ -1,10 +1,11 @@
 import React from 'react'
 import './Footer.css'
 
-const Footer = () => {
+const Footer = ({children}) => {
     return (
         <div className = 'Footer'>
-            
+
+            {children}
         </div>
 )}
 

@@ -6,11 +6,9 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 //import "moment/locale/en";
 import moment from 'moment/moment';
-import { ArrowLeftCircle, Check } from 'react-feather';
-import { ArrowLeft } from 'react-feather';
 import SubmitButton from '../../../atoms/buttons/tick/SubmitButton';
 import BackButton from '../../../atoms/buttons/back/BackButton';
-import BasicButton from '../../../atoms/buttons/BasicButton';
+
 
 //TUTORIAL 
 //NPM DATETIME: https://www.npmjs.com/package/react-datetime
@@ -19,7 +17,7 @@ import BasicButton from '../../../atoms/buttons/BasicButton';
 
 
 
-function AddEventForm({setShow}) {
+function RemoveEventForm({setShow}) {
 
     //const[show, setShow] = useState(false);
     const [start, setStart] = useState("");
@@ -99,6 +97,6 @@ function AddEventForm({setShow}) {
   
   )
 }
-export default AddEventForm;
+export default RemoveEventForm;
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AddEventForm/>);
+root.render(<RemoveEventForm/>);

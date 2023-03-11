@@ -1,21 +1,20 @@
 import React from 'react';
-import FeatherIcon from 'react-feather';
 import './ButtonStyles.css';
-import { Icon } from 'react-feather';
 
 
 
 
-const BasicButton = ({handleClick, icon, className}) => {
+
+const BasicButton = ({children, onClick, className}) => {
 
     return (
 
-        <div
+        <button type='button'
             className={className}
-            onClick={handleClick}
+            onClick={onClick}
         >
-         {icon} {/*strokeWidth={4} size={44}*/}
-        </div>     
+         {children}
+        </button>     
 
     )
 }

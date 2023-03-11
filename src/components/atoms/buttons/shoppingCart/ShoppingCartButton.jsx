@@ -1,11 +1,11 @@
 
 import React from 'react';
 import BasicButton from '../BasicButton';
-import { ArrowLeft } from 'react-feather';
+import { ShoppingCart } from 'react-feather';
 import '../ButtonStyles.css';
 
 
-const BackButton = ({onClick}) => {
+const ShoppingCartButton = ({onClick}) => {
 
 
     return (
@@ -14,7 +14,7 @@ const BackButton = ({onClick}) => {
         className='blackButton'
         onClick={onClick}
     >
-        <ArrowLeft strokeWidth={4} size={44}/>   
+        <ShoppingCart strokeWidth={4} size={44}/>   
      
     </BasicButton>     
 
@@ -22,4 +22,4 @@ const BackButton = ({onClick}) => {
 }
 
 
-export default BackButton;
+export default ShoppingCartButton;

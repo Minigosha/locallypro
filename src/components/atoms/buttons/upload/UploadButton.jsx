@@ -1,11 +1,10 @@
-
 import React from 'react';
 import BasicButton from '../BasicButton';
-import { ArrowLeft } from 'react-feather';
+import { Upload } from 'react-feather';
 import '../ButtonStyles.css';
 
 
-const BackButton = ({onClick}) => {
+const UploadButton = ({onClick}) => {
 
 
     return (
@@ -14,7 +13,7 @@ const BackButton = ({onClick}) => {
         className='blackButton'
         onClick={onClick}
     >
-        <ArrowLeft strokeWidth={4} size={44}/>   
+        <Upload strokeWidth={3} size={34}/>   
      
     </BasicButton>     
 
@@ -22,4 +21,4 @@ const BackButton = ({onClick}) => {
 }
 
 
-export default BackButton;
+export default UploadButton;

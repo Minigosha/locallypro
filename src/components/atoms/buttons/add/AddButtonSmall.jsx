@@ -7,19 +7,19 @@ import BasicButton from '../BasicButton';
 
 
 
-const AddButton = ({onClick}) => {
+const AddButtonSmall = ({onClick}) => {
 
     return (
 
         <BasicButton
-            className='greenButton'
+            className='greenButton--Sm'
             onClick={onClick}
         >
-            <Plus strokeWidth={4} size={44}/>   
+            <Plus strokeWidth={5} size={24}/>   
          
         </BasicButton>     
 
     )
 }
 
-export default AddButton;
+export default AddButtonSmall;

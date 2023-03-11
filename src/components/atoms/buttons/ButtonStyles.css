@@ -17,14 +17,14 @@
     
 }
 
-.greenButtonSm{
+.greenButton--Sm{
     color: white;
     background-color: #41876f;
     border: none;
     cursor: pointer;
     filter: drop-shadow(2px 5px 2px rgb(0 0 0 / 0.4));
-    width: 30px; 
-    height: 30px;
+    width: 35px; 
+    height: 35px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -34,14 +34,14 @@
 
 }
 
-.greenButtonSm:hover{
+.greenButton--Sm:hover{
     background-color:#66cdaa;
     transition: 0.2s;
      
 }
 
 
-.greenButtonXL{
+.greenButton{
     color: white;
     background-color: #41876f;
     border: none;
@@ -54,15 +54,16 @@
     justify-content: center;
     border-radius: 50%;
     text-decoration: none;
+    margin:10px;
 
 }
 
-.greenButtonXL:hover{
+.greenButton:hover{
     background-color:#66cdaa;
     transition: 0.2s;
      
 }
-.blackButtonXL{
+.blackButton{
     color: white;
     background-color: #555555;
     border: none;
@@ -75,9 +76,10 @@
     justify-content: center;
     border-radius: 50%;
     text-decoration: none;
+    margin:10px;
 
 }
-.blackButtonXL:hover{
+.blackButton:hover{
     background-color: #979797;
     transition: 0.2s;
 }

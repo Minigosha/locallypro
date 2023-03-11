@@ -4,7 +4,7 @@ import './ShopCard.css'
 
 const ShopCard = ({ shopName }) => {
     return(
-        <Card cssClass={'producerCard'}>
+        <Card className={'producerCard'}>
             <p>{shopName}</p>
         </Card>
     )

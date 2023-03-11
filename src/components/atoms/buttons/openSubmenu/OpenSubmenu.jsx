@@ -1,11 +1,11 @@
 
 import React from 'react';
 import BasicButton from '../BasicButton';
-import { ArrowLeft } from 'react-feather';
+import { ChevronDown } from 'react-feather';
 import '../ButtonStyles.css';
 
 
-const BackButton = ({onClick}) => {
+const OpenSubmenu = ({onClick}) => {
 
 
     return (
@@ -14,7 +14,7 @@ const BackButton = ({onClick}) => {
         className='blackButton'
         onClick={onClick}
     >
-        <ArrowLeft strokeWidth={4} size={44}/>   
+        <ChevronDown strokeWidth={2} size={30}/>   
      
     </BasicButton>     
 
@@ -22,4 +22,4 @@ const BackButton = ({onClick}) => {
 }
 
 
-export default BackButton;
+export default OpenSubmenu;

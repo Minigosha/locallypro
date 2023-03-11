@@ -1,15 +1,20 @@
 import React, {useState} from 'react'
 import Hero from '../../atoms/hero/Hero'
-import Event from '../../atoms/event/Event'
+import Event from '../../atoms/NOevent/Event'
 //import Footer from '../../organisms/footer/Footer'
 import Intro from '../../atoms/intro/Intro'
 import EventCard from '../../molecules/eventCard/EventCard'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
+import Footer from '../../organisms/footer/Footer'
+import UserButton from '../../atoms/buttons/user/UserButton'
+import BasicModal from '../../molecules/modals/BasicModal'
+import LoginForm from '../../molecules/forms/login/LoginForm'
 //import Search from '../../atoms/search/Search'
 
 
 const ChooseEventPage = () => {
-    const [rawEvents, setRawEvents] = useState([
+    const [showLogin, setShowLogin] = useState(false)
+    const [events, setEvents] = useState([
         {
             date : '2/7',
             time : '19:00-20:00',
@@ -32,34 +37,16 @@ const ChooseEventPage = () => {
         },
     ])
 
-    //setRawEvents()
+    //setEvents()
 
-    const [events, setEvents] = useState([
-        <Event 
-            date = '2/7'
-            time = {'19:00-20:00'}
-            address = {'Mjärdevi, Linköping'}
-        />,
-        <Event 
-            date={'1/4'}
-            time = {'17:00-19:00'}
-            address = {'T1, Linköping'}
-        
-        />,
-        <Event 
-            date={'3/8'}
-            time = {'18:00-19:00'}
-            address = {'Stora Torget, Linköping'}
-        />,
-        <Event 
-            date={'4/4'}
-            time = {'17:00-19:00'}
-            address = {'T1, Linköping'}
-        />,
-    ])
     return(
         <>
-        
+            <BasicModal
+                onClose={() => setShowLogin(false)} show={showLogin}
+                modalTitle="Log in"
+                modalContent={<LoginForm setShow={setShowLogin} />}
+            />
+
             {/* Header */}
         
             <Hero 
@@ -76,9 +63,17 @@ const ChooseEventPage = () => {
 
             <ContentContainer>
                 {/*{events.map(event => event)}*/}
-                {rawEvents.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
+                {events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
 
             </ContentContainer>
+
+            {/* FOOTER */}
+            <Footer>
+                <UserButton
+                  onClick={() => setShowLogin(true)}
+                />
+
+            </Footer>
 
             
 

@@ -1,11 +1,11 @@
 
 import React from 'react';
 import BasicButton from '../BasicButton';
-import { ArrowLeft } from 'react-feather';
+import { User } from 'react-feather';
 import '../ButtonStyles.css';
 
 
-const BackButton = ({onClick}) => {
+const UserButton = ({onClick}) => {
 
 
     return (
@@ -14,7 +14,7 @@ const BackButton = ({onClick}) => {
         className='blackButton'
         onClick={onClick}
     >
-        <ArrowLeft strokeWidth={4} size={44}/>   
+        <User strokeWidth={2} size={44}/>   
      
     </BasicButton>     
 
@@ -22,4 +22,5 @@ const BackButton = ({onClick}) => {
 }
 
 
-export default BackButton;
+export default UserButton;
+

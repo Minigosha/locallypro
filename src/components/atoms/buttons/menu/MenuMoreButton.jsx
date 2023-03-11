@@ -1,19 +1,20 @@
 import React from 'react';
+import BasicButton from '../BasicButton';
 import '../ButtonStyles.css';
 import { MoreHorizontal } from 'react-feather';
 
 
-const MenuMoreButton = ({handleClick}) => {
+const MenuMoreButton = ({onClick}) => {
 
 
     return (
-        <button  
+        <BasicButton  
                  
             className='onlyIcon'           
         >
-            <MoreHorizontal onClick={handleClick} strokeWidth={2} size={30}/>
+            <MoreHorizontal onClick={onClick} strokeWidth={2} size={30}/>
             
-        </button>     
+        </BasicButton>     
 
     )
 }

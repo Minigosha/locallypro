@@ -3,7 +3,7 @@ import SectionHeading from '../../atoms/sectionHeading/SectionHeading'
 //import ShopCard from '../../molecules/shopCard/ShopCard'
 import EventCard from '../../molecules/eventCard/EventCard'
 import ProductCard from '../../molecules/productCard/ProductCard'
-//import Footer from '../../organisms/footer/Footer'
+import AdminProductCard from '../../molecules/productCard/AdminProductCard'
 import ContentContainer from '../../atoms/contentContainer/ContentContainer'
 import Gallery from '../../molecules/gallery/Gallery'
 import SearchBar from '../../atoms/search/SearchBar'
@@ -13,14 +13,21 @@ import AddEventForm from '../../molecules/forms/event/AddEventForm'
 import BasicModal from '../../molecules/modals/BasicModal'
 import { Plus, PlusCircle } from 'react-feather'
 import SubmitButton from '../../atoms/buttons/tick/SubmitButton'
-import BackButton from '../../atoms/buttons/back/backButton'
+import BackButton from '../../atoms/buttons/back/BackButton'
 import BasicButton from '../../atoms/buttons/BasicButton'
 import AddProductForm from '../../molecules/forms/product/AddProductForm'
-
+import AddButtonSmall from '../../atoms/buttons/add/AddButtonSmall'
+import Footer from '../../organisms/footer/Footer'
+import UserButton from '../../atoms/buttons/user/UserButton'
+import LoginForm from '../../molecules/forms/login/LoginForm'
+import HomeButton from '../../atoms/buttons/home/HomeButton'
+import { Routes, Link, Route, useNavigate } from "react-router-dom";
+import ChooseEventPage from '../start/ChooseEventPage'
 
 
 const ProducerStartPage = () => {
-    const [showAddEventForm, setShowAddEventForm] = useState(false)
+    const [showLogin, setShowLogin] = useState(false)
+    const [showAddEvent, setShowAddEvent] = useState(false)
     const [show, setShow] = useState(false)
 
     const [events, setEvents] = useState([
@@ -54,14 +61,20 @@ const ProducerStartPage = () => {
     return (
         <>
             <BasicModal 
-                onClose={() => setShowAddEventForm(false)} show={show}
+                onClose={() => setShowAddEvent(false)} show={showAddEvent}
                 modalTitle="Add new event"
-                modalContent = {<AddEventForm setShowAddEventForm={setShow}/>}
+                modalContent = {<AddEventForm setShow={setShowAddEvent}/>}
             />
             <BasicModal 
                 onClose={() => setShow(false)} show={show}
                 modalTitle="Add new product"
-                modalContent = {<AddProductForm setShowModal={setShow}/>}
+                modalContent = {<AddProductForm setShow={setShow}/>}
+            />
+
+            <BasicModal
+                onClose={() => setShowLogin(false)} show={showLogin}
+                modalTitle="Log in"
+                modalContent={<LoginForm setShow={setShowLogin} />}
             />
 
             {/* MY SHOP */}
@@ -78,7 +91,7 @@ const ProducerStartPage = () => {
             {/* EVENTS */}
             <SectionHeading
                 heading={"Coming events"}
-                actionButton={<BasicButton handleClick={() => setShowAddEventForm(true)} icon={<Plus/>} className='greenButtonSm'/>}
+                actionButton={<AddButtonSmall onClick={() => setShowAddEvent(true)}/>}
             ></SectionHeading>
 
             {events.map(event => <EventCard date={event.date} time={event.time} address={event.address} />)}
@@ -91,7 +104,7 @@ const ProducerStartPage = () => {
 
                 <SectionHeading
                     heading={"My products"} 
-                    actionButton={<BasicButton handleClick={() => setShow(true)} icon={<Plus/>} className='greenButtonSm'/>}
+                    actionButton={<AddButtonSmall onClick={() => setShow(true)} />}
                 >
                     
                 </SectionHeading>
@@ -100,11 +113,21 @@ const ProducerStartPage = () => {
                 <SearchBar/>
 
                 <Gallery>
-                    {product.map(product => <ProductCard name={product.name} quantity={product.quantity} price={product.price} />)}
+                    {product.map(product => <AdminProductCard name={product.name} quantity={product.quantity} price={product.price} />)}
                 </Gallery>
 
-                <AddButton handleClick={() => setShow(true)} icon={<PlusCircle/>} className='greenButton'/>
+                <AddButton onClick={() => setShow(true)}/>
             </ContentContainer>
+
+             {/* FOOTER */}
+            <Footer>
+                <HomeButton/>
+                
+                <UserButton
+                    onClick={() => setShowLogin(true)}
+                />
+
+            </Footer>
 
 
         </>

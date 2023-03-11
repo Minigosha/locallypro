@@ -3,9 +3,6 @@ import '../BasicForm.css'
 import "react-datetime/css/react-datetime.css";
 import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import moment from 'moment/moment';
-import { Check } from 'react-feather';
-import { ArrowLeft } from 'react-feather';
 import SubmitButton from '../../../atoms/buttons/tick/SubmitButton';
 import BackButton from '../../../atoms/buttons/back/BackButton';
 import UploadButton from '../../../atoms/buttons/upload/UploadButton';
@@ -17,19 +14,20 @@ import UploadButton from '../../../atoms/buttons/upload/UploadButton';
 
 
 
-function AddProductForm({setShow}) {
+function RemoveProducerForm({setShow}) {
 
 
-    const [product, setProduct] = useState("");
-    const [quantity, setQuantity] = useState("");
-    
+    const [producer, setProduct] = useState("");
+    const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
 
     //HandleSubmit for testing
     const handleSubmit = (event) => {
       event.preventDefault();
       alert(`The data you entered was: \n
-      Product:  ${product} \n
-      Quantity: ${quantity} \n`)
+      Producer:  ${producer} \n
+      Address: ${address} \n
+      Email: ${email} \n`)
     }
 
     
@@ -38,24 +36,35 @@ function AddProductForm({setShow}) {
       <form onSubmit={handleSubmit}>
 
         <label className='labels'>
-            Product name:
+            Producer name:
             <br/>
         <input 
             type="text" 
             className='textField' 
-            placeholder='Product name' 
+            placeholder='Producer name' 
             onChange={(e)=>{setProduct(e.target.value)}}
             />
         </label><br/>
         
         <label className='labels'>
-            Quantity: 
+        Address: 
             <br/>
             <input 
                 type="text" 
                 className='textField' 
-                placeholder='Quantity'
-                onChange={(e)=>{setQuantity(e.target.value)}}
+                placeholder='Address'
+                onChange={(e)=>{setAddress(e.target.value)}}
+            />
+        </label><br/>
+
+        <label className='labels'>
+        Address: 
+            <br/>
+            <input 
+                type="email" 
+                className='textField' 
+                placeholder='Email'
+                onChange={(e)=>{setEmail(e.target.value)}}
             />
         </label><br/>
 
@@ -80,6 +89,6 @@ function AddProductForm({setShow}) {
   
   )
 }
-export default AddProductForm;
+export default RemoveProducerForm;
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AddProductForm/>);
+root.render(<RemoveProducerForm/>);
