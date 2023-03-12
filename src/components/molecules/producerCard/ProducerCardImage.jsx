@@ -5,17 +5,17 @@ import Card from '../../atoms/card/Card'
 import MenuMoreButton from '../../atoms/buttons/menu/MenuMoreButton'
 
 
-const ProductCardImage = ({ name, quantity, price }) => {
+const ProductCardImage = ({ producerName }) => {
     return(
         <Card className={'productCard'} >
             <div>
             <ImageForGallery 
                 altText={'TEST'}
-                source={'https://assets.biztimes.com/uploads/2019/05/Cheese-Shutterstock-2016-11-07-e1478553303549.jpg'}>
+                source={'https://www.irishfoodawards.com/wp-content/uploads/2017/05/Pure-Food.jpg'}>
 
             </ImageForGallery>
             
-            <p className="name">{name}</p>
+            <p className="name">{producerName}</p>
 
             </div>
 

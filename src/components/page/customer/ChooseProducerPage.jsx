@@ -11,32 +11,33 @@ import Footer from '../../organisms/footer/Footer'
 import HomeButton from '../../atoms/buttons/home/HomeButton'
 import UserButton from '../../atoms/buttons/user/UserButton'
 import ProductCard from '../../molecules/productCard/ProductCard'
+import ProductCardImage from '../../molecules/producerCard/ProducerCardImage'
 
 
 
 const ChooseProducerPage = () => {
     const [showLogin, setShowLogin] = useState(false)
     const [producer, setProducer] = useState([
-        <Producer
-            producerName='Milky way cheese'
-        /*TODO: Add image*/
+        {
+            producerName:'Milky way cheese'
+            /*TODO: Add image*/
 
-        />,
-        <Producer
-            producerName='Fruity Land'
-        /*TODO: Add image*/
+        },
+        {
+            producerName:'Fruity Land'
+            /*TODO: Add image*/
 
-        />,
-        <Producer
-            producerName='Smoky ham'
-        /*TODO: Add image*/
+        },
+        {
+            producerName:'Smoky ham'
+            /*TODO: Add image*/
 
-        />,
-        <Producer
-            producerName='Claire`s Jams'
-        /*TODO: Add image*/
+        },
+        {
+            producerName:'Claire`s Jams'
+            /*TODO: Add image*/
 
-        />,
+        },
     ])
     return (
         <>
@@ -61,7 +62,7 @@ const ChooseProducerPage = () => {
                 <SearchBar/>
 
                 <Gallery>
-                    {producer.map(producer => <ProductCard producerName={producer.producerName} />)}
+                    {producer.map(producer => <ProductCardImage producerName={producer.producerName} />)}
                 </Gallery>
 
             </ContentContainer>
