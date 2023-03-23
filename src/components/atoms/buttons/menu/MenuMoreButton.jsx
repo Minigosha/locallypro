@@ -9,11 +9,11 @@ const MenuMoreButton = ({onClick}) => {
 
     return (
         <BasicButton  
-                 
             className='onlyIcon'           
+            onClick={onClick}     
         >
-            <MoreHorizontal onClick={onClick} strokeWidth={2} size={30}/>
-            
+            <MoreHorizontal  strokeWidth={2} size={30}/>
+              
         </BasicButton>     
 
     )

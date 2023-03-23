@@ -11,6 +11,23 @@ function LoginForm({setShow}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    /*
+    
+    const requestOptions = {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            //'Access-Control-Expose-Headers':'Content-Disposition',
+        },
+        body:JSON.stringify({"userName": username, "password": password})
+    }
+    const response = await fetch(
+        process.env.REACT_APP_SERVER_URL + User/Authenticate,//"User/Authenticate", //Classname/method
+        requestOptions
+    )
+    */
+    
+
     return(
         <div>
 

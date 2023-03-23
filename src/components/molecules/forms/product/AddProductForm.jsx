@@ -20,16 +20,18 @@ import UploadButton from '../../../atoms/buttons/upload/UploadButton';
 function AddProductForm({setShow}) {
 
 
-    const [product, setProduct] = useState("");
+    const [name, setName] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [price, setPrice] = useState("");
     
 
     //HandleSubmit for testing
     const handleSubmit = (event) => {
       event.preventDefault();
       alert(`The data you entered was: \n
-      Product:  ${product} \n
-      Quantity: ${quantity} \n`)
+      Product:  ${name} \n
+      Quantity: ${quantity} \n
+      Price:  ${price} \n`)
     }
 
     
@@ -44,7 +46,7 @@ function AddProductForm({setShow}) {
             type="text" 
             className='textField' 
             placeholder='Product name' 
-            onChange={(e)=>{setProduct(e.target.value)}}
+            onChange={(e)=>{setName(e.target.value)}}
             />
         </label><br/>
         
@@ -56,6 +58,17 @@ function AddProductForm({setShow}) {
                 className='textField' 
                 placeholder='Quantity'
                 onChange={(e)=>{setQuantity(e.target.value)}}
+            />
+        </label><br/>
+
+        <label className='labels'>
+            Price: 
+            <br/>
+            <input 
+                type="text" 
+                className='textField' 
+                placeholder='Price'
+                onChange={(e)=>{setPrice(e.target.value)}}
             />
         </label><br/>
 

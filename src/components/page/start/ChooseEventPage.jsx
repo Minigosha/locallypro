@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Hero from '../../atoms/hero/Hero'
-import Event from '../../atoms/NOevent/Event'
+//import Event from '../../atoms/NOevent/Event'
 //import Footer from '../../organisms/footer/Footer'
 import Intro from '../../atoms/intro/Intro'
 import EventCard from '../../molecules/eventCard/EventCard'
@@ -10,10 +10,13 @@ import UserButton from '../../atoms/buttons/user/UserButton'
 import BasicModal from '../../molecules/modals/BasicModal'
 import LoginForm from '../../molecules/forms/login/LoginForm'
 //import Search from '../../atoms/search/Search'
+import ShowMoreEvents from '../../molecules/showMore/ShowMoreEvents'
+import ShowMore from '../../molecules/showMore/ShowMore'
 
 
 const ChooseEventPage = () => {
     const [showLogin, setShowLogin] = useState(false)
+    /*const [events, setEvents] = useState([])*/
     const [events, setEvents] = useState([
         {
             date : '2/7',
@@ -21,21 +24,27 @@ const ChooseEventPage = () => {
             address : 'Mjärdevi, Linköping'
         },
         {
-            date : '1/4',
+            date : '10/7',
             time : '17:00-19:00',
             address : 'T1, Linköping'
         },
         {
-            date : '9/3',
+            date : '19/7',
             time : '18:00-19:00',
             address : 'Tallboda, Linköping'
         },
         {
-            date : '6/5',
+            date : '23/7',
             time : '15:00-16:30',
             address : 'Malmslätt, Linköping'
         },
     ])
+
+    useEffect(() => {
+        fetch("https://localhost:44363/api/v1/events")
+        .then(res => res.json())
+        .then(result => setEvents(result))
+    }, [])
 
     //setEvents()
 
@@ -63,8 +72,15 @@ const ChooseEventPage = () => {
 
             <ContentContainer>
                 {/*{events.map(event => event)}*/}
+                {/*{events['$values']?.map(event => <EventCard date = {event.dateTime} time = {event.dateTime} address = {event.address + ", " + event.city} />) }*/}
                 {events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
-
+                
+                <div>
+                    <ShowMore>
+                        <ShowMoreEvents/>
+                    </ShowMore>
+                </div>
+            
             </ContentContainer>
 
             {/* FOOTER */}

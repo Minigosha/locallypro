@@ -13,7 +13,7 @@ const BasicButton = ({children, onClick, className}) => {
             className={className}
             onClick={onClick}
         >
-         {children}
+            {children}
         </button>     
 
     )

@@ -19,6 +19,7 @@ function AddProducerForm({setShow}) {
 
     const [producer, setProduct] = useState("");
     const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
     const [email, setEmail] = useState("");
 
     //HandleSubmit for testing
@@ -27,6 +28,7 @@ function AddProducerForm({setShow}) {
       alert(`The data you entered was: \n
       Producer:  ${producer} \n
       Address: ${address} \n
+      City: ${city} \n
       Email: ${email} \n`)
     }
 
@@ -58,7 +60,18 @@ function AddProducerForm({setShow}) {
         </label><br/>
 
         <label className='labels'>
-        Address: 
+        City: 
+            <br/>
+            <input 
+                type="text" 
+                className='textField' 
+                placeholder='City'
+                onChange={(e)=>{setCity(e.target.value)}}
+            />
+        </label><br/>
+
+        <label className='labels'>
+        Email: 
             <br/>
             <input 
                 type="email" 

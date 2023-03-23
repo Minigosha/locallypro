@@ -6,11 +6,9 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 //import "moment/locale/en";
 import moment from 'moment/moment';
-import { ArrowLeftCircle, Check } from 'react-feather';
-import { ArrowLeft } from 'react-feather';
 import SubmitButton from '../../../atoms/buttons/tick/SubmitButton';
 import BackButton from '../../../atoms/buttons/back/BackButton';
-import BasicButton from '../../../atoms/buttons/BasicButton';
+
 
 //TUTORIAL 
 //NPM DATETIME: https://www.npmjs.com/package/react-datetime
@@ -40,8 +38,8 @@ function AddEventForm({setShow}) {
       alert(`The data you entered was: \n
        Event starts: ${start} \n 
        Event ends: ${end} \n
-       City:  ${city} \n
-       Address: ${address} \n`)
+       Address: ${address} \n
+       City:  ${city} \n`)
     }
 
     
@@ -66,16 +64,6 @@ function AddEventForm({setShow}) {
             />
         </label><br/>
 
-        <label className='labels'>
-            City:
-            <br/>
-        <input 
-            type="text" 
-            className='textField' 
-            placeholder='City' 
-            onChange={(e)=>{setCity(e.target.value)}}
-            />
-        </label><br/>
         
         <label className='labels'>
             Address: 
@@ -88,6 +76,16 @@ function AddEventForm({setShow}) {
             />
         </label><br/>
       
+        <label className='labels'>
+            City:
+            <br/>
+        <input 
+            type="text" 
+            className='textField' 
+            placeholder='City' 
+            onChange={(e)=>{setCity(e.target.value)}}
+            />
+        </label><br/>
         <div className='formFooter'>
             <BackButton onClick={()=>setShow(false)}/>
             <SubmitButton className='greenButton'/>
