@@ -13,7 +13,7 @@ const UserButton = ({onClick}) => {
     <BasicButton
         className='blackButton'
         onClick={onClick}
-    >
+    > 
         <User strokeWidth={2} size={44}/>   
      
     </BasicButton>     

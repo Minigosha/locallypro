@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './ShowMore.css'
 import { useState } from "react";
 import EventCard from "../eventCard/EventCard";
+
 
 //Dropdown: 
 //https://www.positronx.io/react-select-dropdown-onchange-event-handler-tutorial/
 
 export default function ShowMoreEvents(){
+    const [events, setEvents] = useState([])
+
+/*TODO: FILTER FOR EXTRA EVENTS; NOT THE SAME ALREADY SHOWN*/
+
+
+
+    /*
     const [events, setEvents] = useState([
         {
             date : '5/8',
@@ -28,15 +36,22 @@ export default function ShowMoreEvents(){
             time : '16:00-17:30',
             address : 'Tannefors, Linköping'
         },
-    ])
+    ])*/
+
+    useEffect(() => {
+        fetch("/api/Events")
+        .then(res => res.json())
+        .then(result => setEvents(result))
+    }, [])
+
 
     return (
         <div> {/*className= "default.container"*/}
 
             {/*<h1>Welcome</h1>
             <h2>Click below</h2>*/}
-            {events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
-
+            {/*{events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }*/}
+            {events?.map(event => <EventCard dateTimeStart = {event.dateTimeStart} dateTimeEnd = {event.dateTimeEnd} address = {event.address + ", " + event.city} />) }
         </div>
     )
 

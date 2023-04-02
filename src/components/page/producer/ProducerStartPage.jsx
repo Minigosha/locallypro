@@ -23,7 +23,7 @@ import LoginForm from '../../molecules/forms/login/LoginForm'
 import HomeButton from '../../atoms/buttons/home/HomeButton'
 import { Routes, Link, Route, useNavigate } from "react-router-dom";
 import ChooseEventPage from '../start/ChooseEventPage'
-
+//import { useIsAuthenticated } from '@azure/msal-react'
 
 const ProducerStartPage = () => {
     const [showLogin, setShowLogin] = useState(false)
@@ -121,11 +121,13 @@ const ProducerStartPage = () => {
 
              {/* FOOTER */}
             <Footer>
+                {/*
                 <HomeButton/>
                 
                 <UserButton
                     onClick={() => setShowLogin(true)}
                 />
+                */}
 
             </Footer>
 

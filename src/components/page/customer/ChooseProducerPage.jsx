@@ -59,7 +59,10 @@ const ChooseProducerPage = () => {
                     heading={"Producers selling during this event:"}
                 />
 
-                <SearchBar/>
+                <SearchBar 
+                    myData = {producer}
+                   /* returnData = {producer.producerName.toLowerCase().includes(value)}*/
+                />
 
                 <Gallery>
                     {producer.map(producer => <ProductCardImage producerName={producer.producerName} />)}
@@ -69,11 +72,13 @@ const ChooseProducerPage = () => {
 
             {/* FOOTER */}
             <Footer>
+                {/*
                 <HomeButton />
 
                 <UserButton
                     onClick={() => setShowLogin(true)}
                 />
+                */}
 
             </Footer>
 

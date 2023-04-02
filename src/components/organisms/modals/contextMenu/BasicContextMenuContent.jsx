@@ -3,22 +3,26 @@ import './ContextMenu.css'
 
 
 
-function BasicContextMenuContent() {
+function BasicContextMenuContent({children}) {
 
 
     return (
         <div>
+            {/*
             <div className='item'>
                 See details
             </div>
+            */}
             <div className='item'>
                 Edit
             </div>
+            {/*
             <div className='item'>
                 Duplicate 
             </div>
+            */}
             <div className='item-warning'>
-                Remove item
+                Remove item {children}
             </div>
         </div>
     )

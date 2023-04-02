@@ -67,11 +67,13 @@ const ChooseProductPage = () => {
 
             {/* FOOTER */}
             <Footer>
+                {/* 
                 <HomeButton />
 
                 <UserButton
                     onClick={() => setShowLogin(true)}
                 />
+             */}
 
             </Footer>
 

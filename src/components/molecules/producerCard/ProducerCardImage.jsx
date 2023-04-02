@@ -5,21 +5,32 @@ import Card from '../../atoms/card/Card'
 import MenuMoreButton from '../../atoms/buttons/menu/MenuMoreButton'
 
 
-const ProductCardImage = ({ producerName }) => {
-    return(
+const ProducerCardImage = ({ producerName, children }) => {
+    return (
         <Card className={'productCard'} >
             <div>
-            <ImageForGallery 
-                altText={'TEST'}
-                source={'https://www.irishfoodawards.com/wp-content/uploads/2017/05/Pure-Food.jpg'}>
 
-            </ImageForGallery>
-            
-            <p className="name">{producerName}</p>
+                <div>
+                    {children}
+                    {/*
+                    <MenuMoreButton onClick={() => setShowContextMenu(true)}>
+                    </MenuMoreButton>
+                    */}
+                </div>
 
+
+                <div>
+                    <ImageForGallery
+                        altText={'TEST'}
+                        source={'https://www.irishfoodawards.com/wp-content/uploads/2017/05/Pure-Food.jpg'}>
+
+                    </ImageForGallery>
+
+                    <p className="name">{producerName}</p>
+
+                </div>
             </div>
-
         </Card>
     )
 }
-export default ProductCardImage
+export default ProducerCardImage

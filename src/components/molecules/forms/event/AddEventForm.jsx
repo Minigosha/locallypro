@@ -32,17 +32,36 @@ function AddEventForm({setShow}) {
         
     };
     
-    //HandleSubmit for testing
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      alert(`The data you entered was: \n
-       Event starts: ${start} \n 
-       Event ends: ${end} \n
-       Address: ${address} \n
-       City:  ${city} \n`)
-    }
 
-    
+
+    async function postJSON(url, data) {
+        try {
+          const response = await fetch(url, {
+            method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+      
+          const result = await response.json();
+          console.log("Success:", result);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+          //HandleSubmit for testing
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        postJSON("/api/Events", {"city":city, "address":address, "dateTimeStart":start, "dateTimeEnd":end})
+        alert(`The data you entered was: \n
+         Event starts: ${start} \n 
+         Event ends: ${end} \n
+         Address: ${address} \n
+         City:  ${city} \n`)
+         setShow(false)
+      }
 
     return (
     <div>

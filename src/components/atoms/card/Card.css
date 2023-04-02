@@ -10,7 +10,8 @@
     transition: transform .2s;
     opacity: 1; 
     font-family:'Gill Sans MT';
-    cursor: pointer;    
+    cursor: pointer;   
+   
 }
 
 .productCard{
@@ -43,6 +44,8 @@
     opacity: 1; 
     font-family:'Gill Sans MT';
     cursor: pointer;
+    /*text-shadow: 0px 1px 2px black;*/
+
 }
 .producerCard{
     background: #66cdaa;
@@ -58,6 +61,7 @@
     opacity: 1; 
     font-family:'Gill Sans MT';
     cursor: pointer;
+    /*text-shadow: 0px 1px 2px black;*/
 }
 
 .productCard:hover{

@@ -12,12 +12,17 @@ import LoginForm from '../../molecules/forms/login/LoginForm'
 //import Search from '../../atoms/search/Search'
 import ShowMoreEvents from '../../molecules/showMore/ShowMoreEvents'
 import ShowMore from '../../molecules/showMore/ShowMore'
+import SignInButton from '../../atoms/buttons/signIn/signIn'
+import SignOutButton from '../../atoms/buttons/signOut/signOut'
+import { useIsAuthenticated } from "@azure/msal-react";
 
 
 const ChooseEventPage = () => {
+    const isAuthenticated = useIsAuthenticated();
+
     const [showLogin, setShowLogin] = useState(false)
-    /*const [events, setEvents] = useState([])*/
-    const [events, setEvents] = useState([
+    const [events, setEvents] = useState([])
+    /* const [events, setEvents] = useState([
         {
             date : '2/7',
             time : '19:00-20:00',
@@ -38,10 +43,10 @@ const ChooseEventPage = () => {
             time : '15:00-16:30',
             address : 'Malmslätt, Linköping'
         },
-    ])
+    ])*/
 
     useEffect(() => {
-        fetch("https://localhost:44363/api/v1/events")
+        fetch("/api/Events")
         .then(res => res.json())
         .then(result => setEvents(result))
     }, [])
@@ -72,8 +77,8 @@ const ChooseEventPage = () => {
 
             <ContentContainer>
                 {/*{events.map(event => event)}*/}
-                {/*{events['$values']?.map(event => <EventCard date = {event.dateTime} time = {event.dateTime} address = {event.address + ", " + event.city} />) }*/}
-                {events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }
+                {events?.map(event => <EventCard dateTimeStart = {event.dateTimeStart} dateTimeEnd = {event.dateTimeEnd} address = {event.address + ", " + event.city} />) }
+                {/*{events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }*/}
                 
                 <div>
                     <ShowMore>
@@ -85,9 +90,14 @@ const ChooseEventPage = () => {
 
             {/* FOOTER */}
             <Footer>
+                 {/* 
+                { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
+                     */}
+                {/* 
                 <UserButton
                   onClick={() => setShowLogin(true)}
                 />
+                */}
 
             </Footer>
 
