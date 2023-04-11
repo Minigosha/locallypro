@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchBar from '../../atoms/search/SearchBar'
 import SectionHeading from '../../atoms/sectionHeading/SectionHeading'
 import EventCard from '../../molecules/eventCard/EventCard'
@@ -17,28 +17,38 @@ import ProductCardImage from '../../molecules/producerCard/ProducerCardImage'
 
 const ChooseProducerPage = () => {
     const [showLogin, setShowLogin] = useState(false)
+    const [producer, setProducer] = useState([])
+
+    /*
     const [producer, setProducer] = useState([
         {
             producerName:'Milky way cheese'
-            /*TODO: Add image*/
+           
 
         },
         {
             producerName:'Fruity Land'
-            /*TODO: Add image*/
+            
 
         },
         {
             producerName:'Smoky ham'
-            /*TODO: Add image*/
+          
 
         },
         {
             producerName:'Claire`s Jams'
-            /*TODO: Add image*/
+        
 
         },
     ])
+*/
+    useEffect(() => {
+        fetch("/api/Producers")
+            .then(res => res.json())
+            .then(result => setProducer(result))
+    }, [])
+
     return (
         <>
             <BasicModal
@@ -47,10 +57,10 @@ const ChooseProducerPage = () => {
                 modalContent={<LoginForm setShow={setShowLogin} />}
             />
 
-            <EventCard 
-                date={'2/7'} 
-                time={'19:00-20:00'} 
-                address={'Mjärdevi, Linköping'} 
+            <EventCard
+                date={'2/7'}
+                time={'19:00-20:00'}
+                address={'Mjärdevi, Linköping'}
             />
 
             <ContentContainer>
@@ -59,13 +69,13 @@ const ChooseProducerPage = () => {
                     heading={"Producers selling during this event:"}
                 />
 
-                <SearchBar 
-                    myData = {producer}
-                   /* returnData = {producer.producerName.toLowerCase().includes(value)}*/
+                <SearchBar
+                    myData={producer}
+                /* returnData = {producer.producerName.toLowerCase().includes(value)}*/
                 />
 
                 <Gallery>
-                    {producer.map(producer => <ProductCardImage producerName={producer.producerName} />)}
+                    {producer.map(producer => <ProductCardImage producerName={producer.name} />)}
                 </Gallery>
 
             </ContentContainer>

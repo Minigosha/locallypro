@@ -17,19 +17,40 @@ import UploadButton from '../../../atoms/buttons/upload/UploadButton';
 function AddProducerForm({setShow}) {
 
 
-    const [producer, setProduct] = useState("");
+    const [producerName, setProducerName] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [email, setEmail] = useState("");
 
-    //HandleSubmit for testing
-    const handleSubmit = (event) => {
-      event.preventDefault();
+    async function postJSON(url, data) {
+        try {
+          const response = await fetch(url, {
+            method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+      
+          const result = await response.json();
+          console.log("Success:", result);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+    
+
+    //Alert only for testing
+    const handleSubmit = (producer) => {
+        producer.preventDefault();
+      postJSON("/api/Producers", {"name":producerName, "address":address, "city":city, "email":email})
       alert(`The data you entered was: \n
-      Producer:  ${producer} \n
+      Producer Name:  ${producerName} \n
       Address: ${address} \n
       City: ${city} \n
       Email: ${email} \n`)
+      setShow(false)
     }
 
     
@@ -44,7 +65,7 @@ function AddProducerForm({setShow}) {
             type="text" 
             className='textField' 
             placeholder='Producer name' 
-            onChange={(e)=>{setProduct(e.target.value)}}
+            onChange={(e)=>{setProducerName(e.target.value)}}
             />
         </label><br/>
         
@@ -80,7 +101,7 @@ function AddProducerForm({setShow}) {
                 onChange={(e)=>{setEmail(e.target.value)}}
             />
         </label><br/>
-
+{/*
         <label className='labels'>
             Upload picture: 
             <br/>
@@ -89,7 +110,8 @@ function AddProducerForm({setShow}) {
              type="text"
                onChange={(e)=>{setQuantity(e.target.value)}}
             />*/}
-        </label><br/>
+       {/* </label><br/>
+        */}
       
         <div className='formFooter'>
             <BackButton onClick={()=>setShow(false)}/>

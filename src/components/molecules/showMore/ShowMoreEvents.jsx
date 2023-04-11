@@ -51,7 +51,7 @@ export default function ShowMoreEvents(){
             {/*<h1>Welcome</h1>
             <h2>Click below</h2>*/}
             {/*{events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }*/}
-            {events?.map(event => <EventCard dateTimeStart = {event.dateTimeStart} dateTimeEnd = {event.dateTimeEnd} address = {event.address + ", " + event.city} />) }
+            {events?.slice(4,undefined).map(event => <EventCard dateTimeStart = {event.dateTimeStart} dateTimeEnd = {event.dateTimeEnd} address = {event.address + ", " + event.city} />) }
         </div>
     )
 

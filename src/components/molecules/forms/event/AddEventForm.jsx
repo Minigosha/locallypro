@@ -51,7 +51,7 @@ function AddEventForm({setShow}) {
         }
       }
 
-          //HandleSubmit for testing
+          //Alert only for testing
     const handleSubmit = (event) => {
         event.preventDefault();
         postJSON("/api/Events", {"city":city, "address":address, "dateTimeStart":start, "dateTimeEnd":end})
@@ -60,6 +60,7 @@ function AddEventForm({setShow}) {
          Event ends: ${end} \n
          Address: ${address} \n
          City:  ${city} \n`)
+         //handleAddEvent= {handleAddEvent}
          setShow(false)
       }
 

@@ -1,9 +1,10 @@
 import React from 'react'
 import './Card.css'
 
-const Card = ({children, className}) => {
+// Maybe add menuItems that should be something like [{name:"Edit", class:"edit", onClick:()=>{}}]
+const Card = ({children, className, key}) => {
     return(
-        <div className={className} >
+        <div className={className} key={key}>
            {children}
         </div>
 )}

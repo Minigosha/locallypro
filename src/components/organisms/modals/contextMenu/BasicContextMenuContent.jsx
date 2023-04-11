@@ -1,10 +1,11 @@
 import React from "react";
-import './ContextMenu.css'
+import './ContextMenu.css';
 
 
 
-function BasicContextMenuContent({children}) {
 
+
+function BasicContextMenuContent({ handleDelete, handleEdit}) {
 
     return (
         <div>
@@ -13,7 +14,7 @@ function BasicContextMenuContent({children}) {
                 See details
             </div>
             */}
-            <div className='item'>
+            <div className='item' onClick={() => handleEdit()} >
                 Edit
             </div>
             {/*
@@ -21,8 +22,8 @@ function BasicContextMenuContent({children}) {
                 Duplicate 
             </div>
             */}
-            <div className='item-warning'>
-                Remove item {children}
+            <div className='item-warning' onClick={() => handleDelete()}>
+                Remove item
             </div>
         </div>
     )
