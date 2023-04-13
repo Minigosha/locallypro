@@ -9,7 +9,7 @@ import BasicContextMenuContent from "../../organisms/modals/contextMenu/BasicCon
 
 
 const EventList = () => {
- 
+
     const [showEventContextMenu, setShowEventContextMenu] = useState(false);
     const [events, setEvents] = useState([])
 
@@ -49,24 +49,27 @@ const EventList = () => {
                 onClose={() => setShowEventContextMenu(false)} show={showEventContextMenu}
                 modalContent={<BasicContextMenuContent
                     //handleEdit= 
-                    id={event.id}
+                    //id={event.id}
                     handleDelete={handleDelete}
                 />}
             />
 
 
 
-            {events?.slice(0, 3).map(event => <EventCard key={event.id} dateTimeStart={event.dateTimeStart} dateTimeEnd={event.dateTimeEnd} address={event.address + ", " + event.city}>
+            {events?.slice(0, 3).map(event =>
+                <div key={event.id}>
+                    <EventCard
+                        dateTimeStart={event.dateTimeStart}
+                        dateTimeEnd={event.dateTimeEnd}
+                        address={event.address + ", " + event.city}>
 
-                <div>
-                    <MenuMoreButton onClick={() => setShowEventContextMenu(true)}>
-                    </MenuMoreButton>
+                        <div>
+                            <MenuMoreButton onClick={() => setShowEventContextMenu(true)}>
+                            </MenuMoreButton>
 
+                        </div>
+                    </EventCard>
                 </div>
-
-
-
-            </EventCard>
             )}
 
         </>

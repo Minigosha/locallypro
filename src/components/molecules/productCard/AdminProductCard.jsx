@@ -13,35 +13,35 @@ const AdminProductCard = ({ name, quantity, price }) => {
     const [showContextMenu, setShowContextMenu] = useState(false)
 
 
-    return(
+    return (
         <>
             <ContextMenu
                 onClose={() => setShowContextMenu(false)} show={showContextMenu}
-                modalContent = {<BasicContextMenuContent/>}                                       
+                modalContent={<BasicContextMenuContent />}
             />
 
-        <Card className={'productCard'} >
-            <div>
+            <Card className={'productCard'} >
+                <div>
 
-            <div>
-            <MenuMoreButton onClick= {()=> setShowContextMenu(true)}>
-            </MenuMoreButton>
-            
-            </div>
-            
-            <div>
-            <ImageForGallery 
-                altText={'TEST'}
-                source={'https://assets.biztimes.com/uploads/2019/05/Cheese-Shutterstock-2016-11-07-e1478553303549.jpg'}>
+                    <div>
+                        <MenuMoreButton onClick={() => setShowContextMenu(true)}>
+                        </MenuMoreButton>
 
-            </ImageForGallery>
-            
-            <p class="name">{name}</p>
-            <p class="quantity">{quantity}</p>
-            <p class="price">{price}</p>
-            </div>
-            </div>
-        </Card>
+                    </div>
+
+                    <div>
+                        <ImageForGallery
+                            altText={'TEST'}
+                            source={'https://assets.biztimes.com/uploads/2019/05/Cheese-Shutterstock-2016-11-07-e1478553303549.jpg'}>
+
+                        </ImageForGallery>
+
+                        <p class="name">{name}</p>
+                        <p class="quantity">{quantity}</p>
+                        <p class="price">{price}</p>
+                    </div>
+                </div>
+            </Card>
         </>
     )
 }

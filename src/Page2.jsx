@@ -50,10 +50,10 @@ const ProducerStartPage = () => {
 
     return (
         <>
-            <BasicModal 
+            <BasicModal
                 onClose={() => setShow(false)} show={show}
                 modalTitle="Add new event"
-                modalContent = {<AddEventForm setShowModal={setShow}/>}
+                modalContent={<AddEventForm setShowModal={setShow} />}
             />
 
             {/* MY SHOP */}
@@ -62,7 +62,7 @@ const ProducerStartPage = () => {
             ></SectionHeading>
 
             {/* TODO: Collapsible menu for shops */}
-            
+
             <ProducerCard
                 businessName={"Milky way cheese"}
             ></ProducerCard>
@@ -75,24 +75,32 @@ const ProducerStartPage = () => {
             {events.map(event => <EventCard date={event.date} time={event.time} address={event.address} />)}
 
             {/* TODO: Collapsible menu for events */}
-            
+
 
             {/* MY PRODUCTS */}
             <ContentContainer>
 
                 <SectionHeading
-                    heading={"My products"} 
+                    heading={"My products"}
                 ></SectionHeading>
 
-                <AddButton handleClick={() => setShow(true)} icon={<PlusCircle/>} className='greenButton'/>
+                <AddButton handleClick={() => setShow(true)} icon={<PlusCircle />} className='greenButton' />
 
-                <SearchBar/>
+                <SearchBar />
 
                 <Gallery>
-                    {product.map(product => <ProductCard name={product.name} quantity={product.quantity} price={product.price} />)}
+                    {product.map(product =>
+                    <div key={product.id}>
+                        <ProductCard
+                            name={product.name}
+                            quantity={product.quantity}
+                            price={product.price}
+                        />
+                    </div>
+                    )}
                 </Gallery>
 
-                <AddButton handleClick={() => setShow(true)} icon={<PlusCircle/>} className='greenButton'/>
+                <AddButton handleClick={() => setShow(true)} icon={<PlusCircle />} className='greenButton' />
             </ContentContainer>
 
 

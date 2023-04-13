@@ -30,6 +30,14 @@
     cursor: pointer;
     
 }
+@media screen and (max-width: 360px) {
+    .productCard{
+      width: 120px;
+      height: auto;
+      border-radius: 5px;
+    }
+  }
+
 .eventCard{
     background: #66cdaa;
     color: white;

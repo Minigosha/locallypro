@@ -3,7 +3,6 @@ import '../BasicForm.css'
 import "react-datetime/css/react-datetime.css";
 import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import moment from 'moment/moment';
 import { Check } from 'react-feather';
 import { ArrowLeft } from 'react-feather';
 import SubmitButton from '../../../atoms/buttons/tick/SubmitButton';
@@ -20,9 +19,9 @@ import UploadButton from '../../../atoms/buttons/upload/UploadButton';
 function EditProductForm({setShow, product}) {
 
 
-    const [name, setName] = useState("");
-    const [quantity, setQuantity] = useState("");
-    const [price, setPrice] = useState("");
+    //const [name, setName] = useState("");
+    //const [quantity, setQuantity] = useState("");
+    //const [price, setPrice] = useState("");
     
     const [formData, setFormData] = useState(product);
 
@@ -66,11 +65,12 @@ function EditProductForm({setShow, product}) {
 
     const handleEdit = (evt) => {
         evt.preventDefault();
-        patchJSON(`/api/products/${product.id}`, formData)
+        patchJSON(`/api/Products/${product.id}`, formData)
         alert(`The data you entered was: \n
                 ID: ${product.id} 
                 ${JSON.stringify(formData)} \n \n 
                 NOTE: Update the site to see your changes`)
+                console.log(formData)
         setShow(false)
     }
 
@@ -87,8 +87,8 @@ function EditProductForm({setShow, product}) {
             className='textField' 
             placeholder='Product name' 
             onChange={handleChange}
-            name="name"
-            value={formData.name}
+            name="productName"
+            value={formData.productName}
             />
         </label><br/>
         
@@ -100,7 +100,7 @@ function EditProductForm({setShow, product}) {
                 className='textField' 
                 placeholder='Quantity'
                 onChange={handleChange}
-                name="Quantity"
+                name="quantity"
                 value={formData.quantity}
             />
         </label><br/>
@@ -113,7 +113,7 @@ function EditProductForm({setShow, product}) {
                 className='textField' 
                 placeholder='Price'
                 onChange={handleChange}
-                name="Price"
+                name="price"
                 value={formData.price}
             />
         </label><br/>

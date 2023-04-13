@@ -26,25 +26,31 @@ import ChooseEventPage from '../start/ChooseEventPage'
 //import { useIsAuthenticated } from '@azure/msal-react'
 import EditProductForm from '../../molecules/forms/product/EditProductForm'
 import MenuMoreButton from '../../atoms/buttons/menu/MenuMoreButton'
-
+//import AddButton from '../../atoms/buttons/add/addButton'
+import BasicContextMenuContent from '../../organisms/modals/contextMenu/BasicContextMenuContent'
+import ContextMenu from '../../organisms/modals/contextMenu/ContextMenu'
+import ShowMoreEvents from '../../molecules/showMore/ShowMoreEvents'
+import ShowMore from '../../molecules/showMore/ShowMore'
 
 const ProducerStartPage = () => {
-    const [showLogin, setShowLogin] = useState(false)
-    const [showAddEvent, setShowAddEvent] = useState(false)
-    const [showEditProduct, setShowEditProduct] = useState(false)
-    const [show, setShow] = useState(false)
     const [events, setEvents] = useState([])
-    const [product, setProduct] = useState([])
+    const [showEditProduct, setShowEditProduct] = useState(false)
+
+    const [product, setProduct] = useState()
     const [products, setProducts] = useState([])
     const [productID, setProductID] = useState();
+    const [showAddProduct, setShowAddProduct] = useState(false)
     const [showProductContextMenu, setShowProductContextMenu] = useState(false);
+
+    const [showAddEvent, setShowAddEvent] = useState(false)
+    const [showLogin, setShowLogin] = useState(false)
+    const [show, setShow] = useState(false)
 
     const [buttonText, setButtonText] = useState("Click");
 
-  function handleClick() {
-    
-    setButtonText('New text');
-  }
+    function handleClick() {
+        setButtonText('New text');
+    }
 
 
     {/*
@@ -93,7 +99,8 @@ const ProducerStartPage = () => {
             )
     }, []);
 
-    const handleDelete = () => {
+
+    const handleDeleteProduct = () => {
         console.log("delete clicked")
         fetch(`/api/Products/${productID}`, { method: 'DELETE' })
             .then(async response => {
@@ -120,7 +127,7 @@ const ProducerStartPage = () => {
 
     }
 
-    const handleMenuClick = (product) => {
+    const handleProductMenuClick = (product) => {
         setProductID(product.id)
         setProduct(product)
         setShowProductContextMenu(true)
@@ -128,7 +135,7 @@ const ProducerStartPage = () => {
     }
 
 
-    const handleEdit = () => {
+    const handleEditProduct = () => {
         console.log("Edit clicked. ID:" + productID)
         setShowProductContextMenu(false)
         setShowEditProduct(true)
@@ -153,15 +160,25 @@ const ProducerStartPage = () => {
                 modalContent={<EditProductForm setShow={setShowEditProduct} product={product} />}
             />
             <BasicModal
-                onClose={() => setShow(false)} show={show}
+                onClose={() => setShowAddProduct(false)} show={showAddProduct}
                 modalTitle="Add new product"
-                modalContent={<AddProductForm setShow={setShow} />}
+                modalContent={<AddProductForm setShow={setShowAddProduct} />}
+            />
+            <BasicModal
+                onClose={() => setShowEditProduct(false)} show={showEditProduct}
+                modalTitle={`Edit product: ${productID}`}
+                modalContent={<EditProductForm setShow={setShowEditProduct} product={product} />}
             />
 
             <BasicModal
                 onClose={() => setShowLogin(false)} show={showLogin}
                 modalTitle="Log in"
                 modalContent={<LoginForm setShow={setShowLogin} />}
+            />
+
+            <ContextMenu
+                onClose={() => setShowProductContextMenu(false)} show={showProductContextMenu}
+                modalContent={<BasicContextMenuContent handleDelete={handleDeleteProduct} handleEdit={handleEditProduct} />}
             />
 
             {/* MY SHOP */}
@@ -185,19 +202,20 @@ const ProducerStartPage = () => {
             {events.map(event => <EventCard date={event.date} time={event.time} address={event.address} />)}
             */}
 
-            {events?.slice(0, 5).map(event =>
-                <li style={{ listStyle: 'none' }} key={event.id}>
+            {events?.slice(0, 3).map(event =>
+                <div key={event.id}>
                     <EventCard
                         dateTimeStart={event.dateTimeStart}
                         dateTimeEnd={event.dateTimeEnd}
-                        address={event.address + ", " + event.city}>
+                        address={event.address + ", " + event.city}
+                    >
 
                         <div> JOIN
-                        
-                            <button 
-                               onClick={handleClick}>
-                               {buttonText}
-                                                               
+
+                            <button
+                                onClick={handleClick}>
+                                {buttonText}
+
                             </button>
                             {/*    
                         {showText && <h1>Hello World</h1>}
@@ -209,11 +227,17 @@ const ProducerStartPage = () => {
                         */}
 
 
-                        </div>
 
+                        </div>
                     </EventCard>
-                </li>
+                </div >
             )}
+
+            <div>
+                <ShowMore>
+                    <ShowMoreEvents />
+                </ShowMore>
+            </div>
 
 
 
@@ -225,7 +249,7 @@ const ProducerStartPage = () => {
 
                 <SectionHeading
                     heading={"My products"}
-                    actionButton={<AddButtonSmall onClick={() => setShow(true)} />}
+                    actionButton={<AddButtonSmall onClick={() => setShowAddProduct(true)} />}
                 >
 
                 </SectionHeading>
@@ -234,14 +258,31 @@ const ProducerStartPage = () => {
                 <SearchBar />
 
                 <Gallery>
-                    {product.map(product => <AdminProductCard name={product.name} quantity={product.quantity} price={product.price} />)}
-                </Gallery>
+                    {/* Add key? key={product.id} */}
+                    {products.map(product =>
+                        <div key={product.id}>
+                            <ProductCard
 
-                <AddButton onClick={() => setShow(true)} />
-            </ContentContainer>
+
+                                name={product.name}
+                                quantity={product.quantity}
+                                price={product.price}
+
+                            >
+                                <MenuMoreButton
+                                    onClick={() => handleProductMenuClick(product)}>
+                                </MenuMoreButton>
+                            </ProductCard>
+
+                        </div>
+                    )}
+                </Gallery>
+                {/*<AddButton onClick={() => setShowAddProduct(true)} />*/}
+
+            </ContentContainer >
 
             {/* FOOTER */}
-            <Footer>
+            < Footer >
                 {/*
                 <HomeButton/>
                 
@@ -250,7 +291,7 @@ const ProducerStartPage = () => {
                 />
                 */}
 
-            </Footer>
+            </Footer >
 
 
         </>

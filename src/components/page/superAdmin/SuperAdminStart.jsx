@@ -19,19 +19,24 @@ import MenuMoreButton from '../../atoms/buttons/menu/MenuMoreButton'
 import ContextMenu from "../../organisms/modals/contextMenu/ContextMenu";
 import BasicContextMenuContent from "../../organisms/modals/contextMenu/BasicContextMenuContent";
 import EditEventForm from "../../molecules/forms/event/EditEventForm";
-
+import EditProducerForm from "../../molecules/forms/producer/EditProducerForm";
+import AddButton from "../../atoms/buttons/add/addButton";
 
 
 const SuperAdminStart = () => {
+    const [event, setEvent] = useState();
+    const [events, setEvents] = useState([])
+    const [eventID, setEventID] = useState();
+    const [showEventContextMenu, setShowEventContextMenu] = useState(false);
     const [showAddEvent, setShowAddEvent] = useState(false)
     const [showEditEvent, setShowEditEvent] = useState(false)
+
+    const [producer, setProducer] = useState()
+    const [producers, setProducers] = useState([])
+    const [producerID, setProducerID] = useState()
     const [showAddProducer, setShowAddProducer] = useState(false)
-    const [showContextMenu, setShowContextMenu] = useState(false);
-    const [eventID, setEventID] = useState();
-    const [event, setEvent] = useState();
-    const [showEventContextMenu, setShowEventContextMenu] = useState(false);
-    const [events, setEvents] = useState([])
-    const [producer, setProducer] = useState([])
+    const [showProducerContextMenu, setShowProducerContextMenu] = useState(false);
+    const [showEditProducer, setShowEditProducer] = useState(false)
 
 
     {/*
@@ -93,7 +98,7 @@ const SuperAdminStart = () => {
             )
     }, [eventID]);
 
-    const handleDelete = () => {
+    const handleDeleteEvent = () => {
         console.log("delete clicked")
         fetch(`/api/Events/${eventID}`, { method: 'DELETE' })
             .then(async response => {
@@ -113,7 +118,7 @@ const SuperAdminStart = () => {
                 }
             })
             .catch(error => {
-               
+
                 console.error(error);
             })
 
@@ -121,28 +126,81 @@ const SuperAdminStart = () => {
     }
 
 
-    const handleMenuClick = (event) => {
+    const handleEventMenuClick = (event) => {
         setEventID(event.id)
         setEvent(event)
         setShowEventContextMenu(true)
-        return setEventID
+        //return setEventID
     }
 
-
-    const handleEdit = () => {
+    
+    const handleEditEvent = () => {
         console.log("Edit clicked. ID:" + eventID)
         setShowEventContextMenu(false)
         setShowEditEvent(true)
         //GetEvent(eventID)
+        
+        
+    }
+    
+        useEffect(() => {
+            fetch("/api/Producers")
+            .then(res => res.json())
+            .then(result => setProducers(result))
+        }, [producerID])
+        
+        const handleDeleteProducer = () => {
+            console.log("delete clicked")
+            fetch(`/api/Producers/${producerID}`, { method: 'DELETE' })
+                .then(async response => {
+                    const data = await response.json();
+                    // check for error response
+                    if (!response.ok) {
+                        // get error message from body or default to response status
+                        const error = (data && data.message) || response.status;
+    
+                        return null
+                    }
+                    else {
+                        alert("Producer deleted! ID: " + producerID)
+                        setShowProducerContextMenu(false)
+                        setProducers(producers.filter(producer => producer.id !== producerID));
+    
+                    }
+                })
+                .catch(error => {
+    
+                    console.error(error);
+                })
+    
+    
+        }
+        
 
+    const handleProducerMenuClick = (producer) => {
+        setProducerID(producer.id)
+        setProducer(producer)
+        setShowProducerContextMenu(true)
 
     }
 
-    useEffect(() => {
-        fetch("/api/Producers")
-            .then(res => res.json())
-            .then(result => setProducer(result))
-    }, [])
+
+    const handleEditProducer = () => {
+        console.log("Edit clicked. ID:" + producerID)
+        setShowProducerContextMenu(false)
+        setShowEditProducer(true)
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     return (
         <>
@@ -156,6 +214,11 @@ const SuperAdminStart = () => {
                 modalTitle={`Edit event: ${eventID}`}
                 modalContent={<EditEventForm setShow={setShowEditEvent} event={event} />}
             />
+            <BasicModal
+                onClose={() => setShowEditProducer(false)} show={showEditProducer}
+                modalTitle={`Edit producer: ${producerID}`}
+                modalContent={<EditProducerForm setShow={setShowEditProducer} producer={producer} />}
+            />
 
             <BasicModal
                 onClose={() => setShowAddProducer(false)} show={showAddProducer}
@@ -163,13 +226,13 @@ const SuperAdminStart = () => {
                 modalContent={<AddProducerForm setShow={setShowAddProducer} />}
             />
             <ContextMenu
-                onClose={() => setShowContextMenu(false)} show={showContextMenu}
-                modalContent={<BasicContextMenuContent handleDelete={handleDelete} />}
+                onClose={() => setShowProducerContextMenu(false)} show={showProducerContextMenu}
+                modalContent={<BasicContextMenuContent handleDelete={handleDeleteProducer} handleEdit={handleEditProducer} />}
             />
 
             <ContextMenu
                 onClose={() => setShowEventContextMenu(false)} show={showEventContextMenu}
-                modalContent={<BasicContextMenuContent handleDelete={handleDelete} handleEdit={handleEdit} />}
+                modalContent={<BasicContextMenuContent handleDelete={handleDeleteEvent} handleEdit={handleEditEvent} />}
             />
 
 
@@ -186,21 +249,21 @@ const SuperAdminStart = () => {
             {/*{events.map(event => event)}*/}
             {/*{events['$values']?.map(event => <EventCard date = {event.dateTime} time = {event.dateTime} address = {event.address + ", " + event.city} />) }*/}
             {/*{events.map(event => <EventCard date={event.date} time={event.time} address={event.address} />)}*/}
-            {events?.slice(0, 5).map(event =>
-                <li style={{ listStyle: 'none' }} key={event.id}>
+            {events?.slice(0, 3).map(event =>
+                <div key={event.id}>
                     <EventCard
                         dateTimeStart={event.dateTimeStart}
                         dateTimeEnd={event.dateTimeEnd}
                         address={event.address + ", " + event.city}>
 
                         <div>
-                            {event.id}
-                            <MenuMoreButton onClick={() => handleMenuClick(event)}>
+                           {/*{event.id}*/}
+                            <MenuMoreButton onClick={() => handleEventMenuClick(event)}>
                             </MenuMoreButton>
 
                         </div>
                     </EventCard>
-                </li>
+                </div>
             )}
 
             <div>
@@ -224,17 +287,27 @@ const SuperAdminStart = () => {
                 />
 
                 <Gallery>
-                    {producer?.map(producer => <><ProducerCardImage key={producer.id} producerName={producer.name}>
 
-                        <MenuMoreButton onClick={() => setShowContextMenu(true)}>
-                        </MenuMoreButton>
-                    </ProducerCardImage>
-                    </>
+                    {producers?.map(producer =>
+                        
+                            <div key={producer.id}>
+                                <ProducerCardImage
+                                    //key={producer.id}
+                                    producerName={producer.name}
+                                >
+
+                                    <MenuMoreButton onClick={() => handleProducerMenuClick(producer)}>
+                                    {producer.id}
+                                    </MenuMoreButton>
+                                </ProducerCardImage>
+                            </div>
+                        
+                        //setShowProducerContextMenu(true)}>
                     )}
 
                 </Gallery>
 
-
+                <AddButton onClick={() => setShowAddProducer(true)} />
 
             </ContentContainer>
             <Footer />

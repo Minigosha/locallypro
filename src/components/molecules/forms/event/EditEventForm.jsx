@@ -15,17 +15,16 @@ import BackButton from '../../../atoms/buttons/back/BackButton';
 
 //moment().format('LLLL'); // Tuesday, 7 March 2023 15:15
 
-//GET>start + PATCH>submit
-//ändra från json till js
+
 
 function EditEventForm({ setShow, event }) {
 
     //const[show, setShow] = useState(false);
 
-    const [start, setStart] = useState("");
-    const [end, setEnd] = useState("");
-    const [city, setCity] = useState("");
-    const [address, setAddress] = useState("");
+    //const [start, setStart] = useState("");
+    //const [end, setEnd] = useState("");
+    //const [city, setCity] = useState("");
+    //const [address, setAddress] = useState("");
    // const [events, setEvents] = useState([])
 
     const [formData, setFormData] = useState(event);

@@ -25,13 +25,34 @@ function AddProductForm({setShow}) {
     const [price, setPrice] = useState("");
     
 
+    async function postJSON(url, data) {
+      try {
+        const response = await fetch(url, {
+          method: "POST", 
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+    
+        const result = await response.json();
+        console.log("Success:", result);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+
+
     //HandleSubmit for testing
-    const handleSubmit = (event) => {
-      event.preventDefault();
+    const handleSubmit = (product) => {
+      product.preventDefault();
+      postJSON("/api/Products", {"name":name, "quantity":quantity, "price":price })
       alert(`The data you entered was: \n
       Product:  ${name} \n
       Quantity: ${quantity} \n
       Price:  ${price} \n`)
+      setShow(false)
     }
 
     

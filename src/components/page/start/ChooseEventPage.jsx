@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Hero from '../../atoms/hero/Hero'
 //import Event from '../../atoms/NOevent/Event'
 //import Footer from '../../organisms/footer/Footer'
@@ -47,13 +47,13 @@ const ChooseEventPage = () => {
 
     useEffect(() => {
         fetch("/api/Events")
-        .then(res => res.json())
-        .then(result => setEvents(result))
+            .then(res => res.json())
+            .then(result => setEvents(result))
     }, [])
 
     //setEvents()
 
-    return(
+    return (
         <>
             <BasicModal
                 onClose={() => setShowLogin(false)} show={showLogin}
@@ -62,35 +62,43 @@ const ChooseEventPage = () => {
             />
 
             {/* Header */}
-        
-            <Hero 
-                source = {"https://i.pinimg.com/originals/f0/77/d3/f077d3049799fee40694e5db9a90f5ca.png"}
-                
-                alt = {"Green Wheat"}    
+
+            <Hero
+                source={"https://i.pinimg.com/originals/f0/77/d3/f077d3049799fee40694e5db9a90f5ca.png"}
+
+                alt={"Green Wheat"}
             ></Hero>
-        
+
 
             {/* Content */}
-            <Intro  intro={'Choose when and where you want to buy local products:'}/>
+            <Intro intro={'Choose when and where you want to buy local products:'} />
 
             {/*<Search></Search>*/}
 
             <ContentContainer>
                 {/*{events.map(event => event)}*/}
-                {events?.map(event => <EventCard dateTimeStart = {event.dateTimeStart} dateTimeEnd = {event.dateTimeEnd} address = {event.address + ", " + event.city} />) }
+                {events?.map(event =>
+                    <div key={event.id}>
+                        <EventCard
+                            dateTimeStart={event.dateTimeStart}
+                            dateTimeEnd={event.dateTimeEnd}
+                            address={event.address + ", " + event.city}
+                        />
+                    </div>
+                )}
                 {/*{events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }*/}
-                
+
                 <div>
                     <ShowMore>
-                        <ShowMoreEvents/>
+                        <ShowMoreEvents />
                     </ShowMore>
                 </div>
-            
+
             </ContentContainer>
 
             {/* FOOTER */}
             <Footer>
-                 {/* 
+                {/* 
                 { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
                      */}
                 {/* 
@@ -101,7 +109,7 @@ const ChooseEventPage = () => {
 
             </Footer>
 
-            
+
 
 
 

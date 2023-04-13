@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchBar from '../../atoms/search/SearchBar'
 import SectionHeading from '../../atoms/sectionHeading/SectionHeading'
 import EventCard from '../../molecules/eventCard/EventCard'
@@ -14,8 +14,10 @@ import UserButton from '../../atoms/buttons/user/UserButton'
 
 const ChooseProductPage = () => {
     const [showLogin, setShowLogin] = useState(false)
+    const [products, setProducts] = useState([])
 
-    const [product, setProduct] = useState([
+{ /*
+   const [products, setProducts] = useState([
         {
 
             name: 'Mozzarella cheese',
@@ -28,6 +30,15 @@ const ChooseProductPage = () => {
             price: '35Kr'
         },
     ])
+*/}
+
+    useEffect(() => {
+        fetch("/api/Products")
+            .then(res => res.json())
+            .then(result => (
+                setProducts(result))
+            )
+    }, []);
 
 
     return (
@@ -37,17 +48,17 @@ const ChooseProductPage = () => {
                 modalTitle="Log in"
                 modalContent={<LoginForm setShow={setShowLogin} />}
             />
-                            <SectionHeading
-                    heading={"Chosen event:"}
-                    />
-            <EventCard 
-                date={'2/7'} 
-                time={'19:00-20:00'} 
-                address={'Mjärdevi, Linköping'} 
+            <SectionHeading
+                heading={"Chosen event:"}
             />
-                            <SectionHeading
-                    heading={"Chosen producer:"}
-                    />
+            <EventCard
+                date={'2/7'}
+                time={'19:00-20:00'}
+                address={'Mjärdevi, Linköping'}
+            />
+            <SectionHeading
+                heading={"Chosen producer:"}
+            />
             <ProducerCard
                 businessName={"Milky way cheese"}
             ></ProducerCard>
@@ -57,10 +68,18 @@ const ChooseProductPage = () => {
                 <SectionHeading
                     heading={"Products from this producer:"}
                 />
-                <SearchBar/>
+                <SearchBar />
 
                 <Gallery>
-                    {product.map(product => <ProductCard name={product.name} quantity={product.quantity} price={product.price} />)}
+                    {products.map(product =>
+                        <div key={product.id}>
+                            <ProductCard
+                                name={product.name}
+                                quantity={product.quantity}
+                                price={product.price}
+                            />
+                        </div>
+                    )}
                 </Gallery>
 
             </ContentContainer>

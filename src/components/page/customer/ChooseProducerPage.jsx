@@ -75,7 +75,12 @@ const ChooseProducerPage = () => {
                 />
 
                 <Gallery>
-                    {producer.map(producer => <ProductCardImage producerName={producer.name} />)}
+                    {producer.map(producer =>
+                        <div key={producer.id}>
+                            <ProductCardImage
+                                producerName={producer.name} />
+                        </div>
+                    )}
                 </Gallery>
 
             </ContentContainer>
