@@ -31,6 +31,7 @@ import BasicContextMenuContent from '../../organisms/modals/contextMenu/BasicCon
 import ContextMenu from '../../organisms/modals/contextMenu/ContextMenu'
 import ShowMoreEvents from '../../molecules/showMore/ShowMoreEvents'
 import ShowMore from '../../molecules/showMore/ShowMore'
+import JoinEvent from '../../atoms/buttons/joinEvents/JoinEvent'
 
 const ProducerStartPage = () => {
     const [events, setEvents] = useState([])
@@ -51,6 +52,13 @@ const ProducerStartPage = () => {
     function handleClick() {
         setButtonText('New text');
     }
+
+    const [joinEvent, setJoinEvent] = useState();    
+    var buttonShowed = joinEvent? <JoinEvent/> : <JoinEvent/>;
+
+    function toggleJoinButton() {
+        setJoinEvent(!joinEvent);
+      }
 
 
     {/*
@@ -210,13 +218,8 @@ const ProducerStartPage = () => {
                         address={event.address + ", " + event.city}
                     >
 
-                        <div> JOIN
-
-                            <button
-                                onClick={handleClick}>
-                                {buttonText}
-
-                            </button>
+                        <div> 
+                            <JoinEvent eventID={event.id}/>
                             {/*    
                         {showText && <h1>Hello World</h1>}
                         <button onClick={() => setShowText(!showText)}>Toggle</button>

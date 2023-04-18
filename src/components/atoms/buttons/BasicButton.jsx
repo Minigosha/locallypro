@@ -5,7 +5,7 @@ import './ButtonStyles.css';
 
 
 
-const BasicButton = ({children, onClick, className}) => {
+const BasicButton = ({children, onClick, className, ...props}) => {
 
     return (
 

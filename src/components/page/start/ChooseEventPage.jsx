@@ -15,12 +15,34 @@ import ShowMore from '../../molecules/showMore/ShowMore'
 import SignInButton from '../../atoms/buttons/signIn/signIn'
 import SignOutButton from '../../atoms/buttons/signOut/signOut'
 import { useIsAuthenticated } from "@azure/msal-react";
+import { useParams } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 
 
 const ChooseEventPage = () => {
     const isAuthenticated = useIsAuthenticated();
 
     const [showLogin, setShowLogin] = useState(false)
+
+    const [eventKey, setEventKey] = useState("")
+    const [selectedEventID, setSelectedEventID] = useState("");
+    
+    //let selectedEventID = null;
+
+    const handleClick = (clickID) => {
+        console.log("Test 3. Event ID: " + clickID)
+
+        return (
+
+            <>
+                {clickID}
+
+            </>
+
+        )
+
+    }
+
     const [events, setEvents] = useState([])
     /* const [events, setEvents] = useState([
         {
@@ -53,6 +75,16 @@ const ChooseEventPage = () => {
 
     //setEvents()
 
+
+    /*
+    const HandleClickOnEvent = () => {
+       const params=  useParams()
+       const eventID= params.eventID
+       console.log("clicked" + eventID)
+        return <div>MY CARD {eventID}</div>
+    }
+    */
+
     return (
         <>
             <BasicModal
@@ -77,13 +109,27 @@ const ChooseEventPage = () => {
 
             <ContentContainer>
                 {/*{events.map(event => event)}*/}
+                {/*{EventDetails}*/}
                 {events?.map(event =>
                     <div key={event.id}>
-                        <EventCard
-                            dateTimeStart={event.dateTimeStart}
-                            dateTimeEnd={event.dateTimeEnd}
-                            address={event.address + ", " + event.city}
-                        />
+
+                        
+                        <Link to={`/ChooseProducerPage/Event/${event.id}`}>
+                            <EventCard
+                                dateTimeStart={event.dateTimeStart}
+                                dateTimeEnd={event.dateTimeEnd}
+                                address={event.address + ", " + event.city}
+                               
+                                test={console.log("Test 1. Event ID: " + event.id)}
+                            >
+
+                                {handleClick(event.id)}
+                                {console.log("Test 2. Event ID:" + event.id)}
+
+
+                            </EventCard>
+                        </Link>
+
                     </div>
                 )}
                 {/*{events.map(event => <EventCard date = {event.date} time = {event.time} address = {event.address} />) }*/}

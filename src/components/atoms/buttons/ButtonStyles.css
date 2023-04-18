@@ -1,6 +1,6 @@
 .onlyIcon{
     color:#555555;
-   /* text-shadow: 5px 3px 17px #848282;*/
+    /* text-shadow: 5px 3px 17px #848282;*/
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -31,7 +31,6 @@
     border-radius: 50%;
     text-decoration: none;
     margin:0 0 0 10px;
-
 }
 
 .greenButton--Sm:hover{
@@ -55,6 +54,7 @@
     border-radius: 50%;
     text-decoration: none;
     margin:10px;
+    border: 1px solid #636363;
 
 }
 

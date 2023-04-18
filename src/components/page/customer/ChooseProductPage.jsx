@@ -11,12 +11,22 @@ import ContentContainer from '../../atoms/contentContainer/ContentContainer'
 import Footer from '../../organisms/footer/Footer'
 import HomeButton from '../../atoms/buttons/home/HomeButton'
 import UserButton from '../../atoms/buttons/user/UserButton'
+import { useParams } from 'react-router-dom'
 
 const ChooseProductPage = () => {
     const [showLogin, setShowLogin] = useState(false)
     const [products, setProducts] = useState([])
+    const [chosenEvent, setChosenEvent] = useState([])
+    const [chosenProducer, setChosenProducer] = useState([])
 
-{ /*
+
+    const { eventID } = useParams()
+    const { producerID } = useParams()
+
+    console.log("EVENT ID : " + eventID);
+    console.log("Producer ID : " + producerID);
+
+    { /*
    const [products, setProducts] = useState([
         {
 
@@ -40,6 +50,24 @@ const ChooseProductPage = () => {
             )
     }, []);
 
+    useEffect(() => {
+        fetch(`/api/Events/${eventID}`)
+            .then(res => res.json())
+            .then(result => {
+                setChosenEvent(result);
+                console.log("RESULT:" + result);
+            });
+    }, [])
+
+    useEffect(() => {
+        fetch(`/api/Producers/${producerID}`)
+            .then(res => res.json())
+            .then(result => {
+                setChosenProducer(result);
+                console.log("RESULT:" + result);
+            });
+    }, [])
+
 
     return (
         <>
@@ -52,15 +80,21 @@ const ChooseProductPage = () => {
                 heading={"Chosen event:"}
             />
             <EventCard
-                date={'2/7'}
-                time={'19:00-20:00'}
-                address={'Mjärdevi, Linköping'}
+                dateTimeStart={chosenEvent.dateTimeStart}
+                dateTimeEnd={chosenEvent.dateTimeEnd}
+                address={chosenEvent.address}
+                city={chosenEvent.city}
             />
             <SectionHeading
                 heading={"Chosen producer:"}
             />
+            {/*
             <ProducerCard
                 businessName={"Milky way cheese"}
+            ></ProducerCard>
+            */}
+            <ProducerCard
+                businessName={chosenProducer.name}
             ></ProducerCard>
 
             <ContentContainer>

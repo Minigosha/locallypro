@@ -1,0 +1,54 @@
+import React from 'react'
+import Card from '../../atoms/card/Card'
+/*import ProductCard from '../productCard/ProductCard'*/
+import './EventCard.css'
+import { useParams, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
+
+const EventCardChild = ({}) => {
+   
+ 
+   const [eventDetails, setEventDetails] = useState({})
+    
+    useEffect(() => {
+        getEvent()
+    });
+
+    const getEvent = () => {
+        fetch(`/api/Events/${eventID}`)
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+        
+        
+        console.log("Clicked on: " + event + eventID + event.id)
+        
+        return(
+            <Link to={ `/api/Events/${eventID}`}></Link>
+                     
+        )
+    }
+
+
+
+    return (
+        <div onClick={HandleClick(eventID)}>
+            
+            <Card className={'eventCard'} key={key}
+            
+            >
+                <p>Start: {dateTimeStart}</p>
+                <p>End: {dateTimeEnd}</p>
+                <p>{address}</p>
+                <p>{city}</p>
+
+                <p>{eventID}</p>
+               
+
+                {children}
+            </Card>
+        </div>
+    )
+}
+export default EventCardChild

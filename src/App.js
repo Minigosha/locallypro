@@ -17,6 +17,7 @@ import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/
 import { loginRequest } from "./authConfig";
 import { ProfileData } from "./components/ProfileData";
 import { callMsGraph } from "./graph";
+import EventCard from "./components/molecules/eventCard/EventCard";
 
 
 function ProfileContent() {
@@ -107,17 +108,18 @@ function App() {
 
         <Link to="/ProducerStartPage">Producer Link</Link> <br/>
         <Link to="/ChooseEventPage">Event Link</Link> <br/>
-        <Link to="/ChooseProducerPage">Choose Producer</Link> <br/>
-        <Link to="/ChooseProductPage">Choose Product</Link> <br/>
+        {/*<Link to="/ChooseProducerPage">Choose Producer</Link> <br/>*/}
+        {/*<Link to="/ChooseProductPage">Choose Product</Link> <br/>*/}
         <Link to="/SuperAdminStart">Super Admin Site</Link> <br/>
 
         <Routes>
           <Route path="/" element={<ChooseEventPage />} />
           <Route path="/ChooseEventPage" element={<ChooseEventPage />} />
           <Route path="/ProducerStartPage" element={<ProducerStartPage />} />
-          <Route path="/ChooseProducerPage" element={<ChooseProducerPage />} />
-          <Route path="/ChooseProductPage" element={<ChooseProductPage />} />
+          <Route path="/ChooseProducerPage/Event/:eventID" element={<ChooseProducerPage />} />
+          <Route path="/ChooseProductPage/Event/:eventID/Producer/:producerID" element={<ChooseProductPage />} />
           <Route path="/SuperAdminStart" element={<SuperAdminStart />} />
+          {/*<Route path="/api/Events/:eventID" element={<EventCard/>}/> */}
         </Routes>
 
       </div>

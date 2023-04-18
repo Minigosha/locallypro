@@ -12,12 +12,23 @@ import HomeButton from '../../atoms/buttons/home/HomeButton'
 import UserButton from '../../atoms/buttons/user/UserButton'
 import ProductCard from '../../molecules/productCard/ProductCard'
 import ProductCardImage from '../../molecules/producerCard/ProducerCardImage'
+import { useParams, Link } from 'react-router-dom'
 
 
 
 const ChooseProducerPage = () => {
     const [showLogin, setShowLogin] = useState(false)
     const [producer, setProducer] = useState([])
+    const [chosenEvent, setChosenEvent] = useState([])
+    const [chosenProducer, setChosenProducer] = useState([])
+
+    console.log(useParams());
+    const { eventID } = useParams()
+    const { producerID } = useParams()
+
+    console.log("EVENT ID : " + eventID);
+    console.log("Producer ID : " + producerID);
+
 
     /*
     const [producer, setProducer] = useState([
@@ -49,6 +60,26 @@ const ChooseProducerPage = () => {
             .then(result => setProducer(result))
     }, [])
 
+
+    useEffect(() => {
+        fetch(`/api/Events/${eventID}`)
+            .then(res => res.json())
+            .then(result => {
+                setChosenEvent(result);
+                console.log("RESULT:" + result);
+            });
+    }, [])
+
+    useEffect(() => {
+        fetch(`/api/Producers/${producerID}`)
+            .then(res => res.json())
+            .then(result => {
+                setChosenProducer(result);
+                console.log("RESULT:" + result);
+            });
+    }, [])
+
+
     return (
         <>
             <BasicModal
@@ -57,11 +88,25 @@ const ChooseProducerPage = () => {
                 modalContent={<LoginForm setShow={setShowLogin} />}
             />
 
+            {/*Event chosen: {eventID}*/}
+
+
             <EventCard
-                date={'2/7'}
-                time={'19:00-20:00'}
-                address={'Mjärdevi, Linköping'}
+                dateTimeStart={chosenEvent.dateTimeStart}
+                dateTimeEnd={chosenEvent.dateTimeEnd}
+                address={chosenEvent.address}
+                city={chosenEvent.city}
             />
+
+            {/*
+
+            <EventCard
+                dateTimeStart={"FAKE"}
+                dateTimeEnd={'FAKE'}
+                address={'FAKE'}
+            />
+
+            */}
 
             <ContentContainer>
 
@@ -77,8 +122,13 @@ const ChooseProducerPage = () => {
                 <Gallery>
                     {producer.map(producer =>
                         <div key={producer.id}>
-                            <ProductCardImage
-                                producerName={producer.name} />
+                            <Link to={`/ChooseProductPage/Event/${eventID}/Producer/${producer.id}`}>
+                                <ProductCardImage
+                                    producerName={producer.name}>
+
+                                </ProductCardImage>
+                                {producer.id}
+                            </Link>
                         </div>
                     )}
                 </Gallery>
