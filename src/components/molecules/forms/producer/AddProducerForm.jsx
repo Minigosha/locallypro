@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom/client';
 import SubmitButton from '../../../atoms/buttons/tick/SubmitButton';
 import BackButton from '../../../atoms/buttons/back/BackButton';
 import UploadButton from '../../../atoms/buttons/upload/UploadButton';
+import { useRef } from 'react';
 
 //TUTORIAL 
 //NPM DATETIME: https://www.npmjs.com/package/react-datetime
@@ -16,7 +17,7 @@ import UploadButton from '../../../atoms/buttons/upload/UploadButton';
 
 function AddProducerForm({setShow}) {
 
-
+  const inputRef = useRef(null);
     const [producerName, setProducerName] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");

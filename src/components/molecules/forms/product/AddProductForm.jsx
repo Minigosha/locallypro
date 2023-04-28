@@ -9,6 +9,7 @@ import { ArrowLeft } from 'react-feather';
 import SubmitButton from '../../../atoms/buttons/tick/SubmitButton';
 import BackButton from '../../../atoms/buttons/back/BackButton';
 import UploadButton from '../../../atoms/buttons/upload/UploadButton';
+import { useRef } from 'react';
 
 //TUTORIAL 
 //NPM DATETIME: https://www.npmjs.com/package/react-datetime
@@ -19,7 +20,7 @@ import UploadButton from '../../../atoms/buttons/upload/UploadButton';
 
 function AddProductForm({setShow}) {
 
-
+  const inputRef = useRef(null);
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
@@ -97,6 +98,7 @@ function AddProductForm({setShow}) {
             Upload picture: 
             <br/>
             <UploadButton/>
+            
                {/* <input 
              type="text"
                onChange={(e)=>{setQuantity(e.target.value)}}

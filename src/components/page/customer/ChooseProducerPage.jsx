@@ -29,6 +29,11 @@ const ChooseProducerPage = () => {
     console.log("EVENT ID : " + eventID);
     console.log("Producer ID : " + producerID);
 
+    //Scroll to the top of the page after render
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
 
     /*
     const [producer, setProducer] = useState([

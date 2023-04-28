@@ -44,7 +44,7 @@ function ProfileContent() {
   }
 
   function TryGetDataFromApi() {
-/*
+
     const headers = new Headers();
     const bearer = `Bearer ${accessToken}`;
 
@@ -55,10 +55,10 @@ function ProfileContent() {
         headers: headers
     };
     console.log(headers); // Log headers object to confirm Authorization header is set
-*/
-    //fetch("/api/Events", options)
+
+    fetch("/api/Events", options)
     
-    fetch("/api/Events")
+   // fetch("/api/Events")
       .then(response =>
       {      
         response.json().then(data => setApiReply(data))
@@ -73,13 +73,14 @@ function ProfileContent() {
           <h5 className="card-title">Welcome {name}</h5>
           {accessToken ? 
               <div>
+                {JSON.stringify(accessToken)}
                 <p>Access Token Acquired!</p>
                 <button onClick={TryGetDataFromApi}>Request Api Data</button>
               </div>
               :
               <button onClick={RequestAccessToken}>Request Access Token</button>
           }
-          {apiReply && <p>{apiReply}</p>} {/* Display API response */}
+          {apiReply && <p>{JSON.stringify(apiReply)}</p>} {/* Display API response */}
       </>
   );
 };
