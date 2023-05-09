@@ -24,7 +24,7 @@ const ProductCard = ({ name, quantity, price, children }) => {
 
                 <p class="name">{name}</p>
                 <p class="quantity">{quantity}</p>
-                <p class="price">{price}</p>
+                <p class="price">{price} Kr</p>
             </div>
 
         </Card>

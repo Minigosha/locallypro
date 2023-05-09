@@ -12,8 +12,9 @@ const JoinEvent = ({ eventID }) => {
 
         <BasicButton
             //style= {{color: "lightblue"}}
-            className='greenButton'
             onClick={() => setToggled(!toggled)}
+            //className='greenButton'
+            className= {toggled ? 'greenButton' : 'blackButton'}
         >
             
             {/*<CheckCircle strokeWidth={2} size={20} />*/}

@@ -107,11 +107,11 @@ function App() {
 
       <div>
 
+        <Link to="/SuperAdminStart">Super Admin Site</Link> <br/>
         <Link to="/ProducerStartPage">Producer Link</Link> <br/>
-        <Link to="/ChooseEventPage">Event Link</Link> <br/>
+        <Link to="/ChooseEventPage">Customer Link</Link> <br/>
         {/*<Link to="/ChooseProducerPage">Choose Producer</Link> <br/>*/}
         {/*<Link to="/ChooseProductPage">Choose Product</Link> <br/>*/}
-        <Link to="/SuperAdminStart">Super Admin Site</Link> <br/>
 
         <Routes>
           <Route path="/" element={<ChooseEventPage />} />

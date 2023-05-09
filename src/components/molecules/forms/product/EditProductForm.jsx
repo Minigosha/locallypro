@@ -87,8 +87,8 @@ function EditProductForm({setShow, product}) {
             className='textField' 
             placeholder='Product name' 
             onChange={handleChange}
-            name="productName"
-            value={formData.productName}
+            name="name"
+            value={formData.name}
             />
         </label><br/>
         

@@ -73,9 +73,9 @@ function EditProducerForm({ setShow, producer }) {
                         type="text"
                         className='textField'
                         placeholder='Producer name'
-                        name="producerName"
+                        name="name"
                         onChange={handleChange}
-                        value={formData.producerName}
+                        value={formData.name}
                         //onChange={(e) => { setProducerName(e.target.value) }}
                         />
                       

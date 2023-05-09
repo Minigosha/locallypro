@@ -114,7 +114,7 @@ const ChooseEventPage = () => {
                     <div key={event.id}>
 
                         
-                        <Link to={`/ChooseProducerPage/Event/${event.id}`}>
+                        <Link to={`/ChooseProducerPage/Event/${event.id}`} style={{ textDecoration: 'none' }}>
                             <EventCard
                                 dateTimeStart={event.dateTimeStart}
                                 dateTimeEnd={event.dateTimeEnd}

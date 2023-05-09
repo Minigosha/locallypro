@@ -127,12 +127,12 @@ const ChooseProducerPage = () => {
                 <Gallery>
                     {producer.map(producer =>
                         <div key={producer.id}>
-                            <Link to={`/ChooseProductPage/Event/${eventID}/Producer/${producer.id}`}>
+                            <Link to={`/ChooseProductPage/Event/${eventID}/Producer/${producer.id}`} style={{ textDecoration: 'none' }}>
                                 <ProductCardImage
                                     producerName={producer.name}>
 
                                 </ProductCardImage>
-                                {producer.id}
+                                {/*{producer.id}*/}
                             </Link>
                         </div>
                     )}
